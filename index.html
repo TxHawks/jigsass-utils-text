@@ -225,10 +225,18 @@ syntax, with colons (&#39;:&#39;) replaced by two dashes (<code>--</code>) to fo
 conventions.</p>
 <h4 id="available-classes">Available classes</h4>
 <ul>
-<li><code>.u-ta--start</code>: text-align: (left|right) (left in <code>LTR</code>, right in <code>RTL</code>)</li>
+<li><code>.u-ta--start</code>: text-align: (left|right) (left in <code>LTR</code>, right in <code>RTL</code>)<ul>
+<li><code>[dir=ltr] .u-ta--start</code>: text-align: left</li>
+<li><code>[dir=rtl] .u-ta--start</code>: text-align: right</li>
+</ul>
+</li>
 <li><code>.u-ta--l</code>: text-align: left</li>
 <li><code>.u-ta--c</code>: text-align: center</li>
-<li><code>.u-ta--end</code>: text-align: (right|left) (right in <code>LTR</code>, left in <code>RTL</code>)</li>
+<li><code>.u-ta--end</code>: text-align: (right|left) (right in <code>LTR</code>, left in <code>RTL</code>)<ul>
+<li><code>[dir=ltr] .u-ta--end</code>: text-align: right</li>
+<li><code>[dir=rtl] .u-ta--end</code>: text-align: left</li>
+</ul>
+</li>
 <li><code>.u-tr--r</code>: text-align: right</li>
 <li><code>.u-ta--j</code>: text-align: justify</li>
 </ul>
@@ -1097,7 +1105,7 @@ class under these  conditions.</p>
 			</div>
 		</section>
 		
-	<footer>Last modified Monday, 11 April 2016 20:06</footer>
+	<footer>Last modified Monday, 11 April 2016 21:17</footer>
 </main>
 <script src="prism.js"></script>
 <script src="examples.js"></script>
