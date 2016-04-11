@@ -1,0 +1,210 @@
+// *************************************
+//
+// # Text Alignment
+//
+// *************************************
+
+@charset 'UTF-8';
+
+// -------------------------------------
+// Dependencies
+// -------------------------------------
+
+@if (not mixin-exists(jigsass-define-util)) {
+  @error '`jigsass-utils-text` has a dependency on `jigsass-tools-selectors`. ' +
+    'Please import it before this file.';
+}
+
+
+
+
+
+// -------------------------------------
+// Introduction
+// -------------------------------------
+
+// stylelint-disable
+/* ---
+section: White-space Utils
+title: Introduction
+order: -10
+---
+
+A collection of dynamically generated white-space utility classes.
+
+Class names follow the [Emmet](http://docs.emmet.io/cheat-sheet/) abbreviation
+syntax, with colons (':') replaced by two dashes (`--`) to follow BEM naming
+conventions.
+
+#### Available classes
+
+  - `.u-whs--n`: white-space: normal
+  - `.u-whs--p`: white-space: pre
+  - `.u-whs--nw`: white-space: nowrap
+  - `.u-whs--pw`: white-space: pre-wrap
+  - `.u-whs--pl`: white-space: pre-line
+
+#### Installation
+
+Using npm:
+
+```sh
+npm i -S jigsass-utils-text
+```
+
+#### Usage
+Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).
+
+```scss
+@import 'path/to/jigsass-utils-text/scss/index';
+```
+
+Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual white-space
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside `.foo` and .`bar`):
+
+```scss
+// _c.foo.scss
+.foo {
+  @include jigsass-util(u-whs, $modifier: nw); // <-- white-space: nowrap
+
+  ...
+}
+```
+
+```scss
+// _c.bar.scss
+.bar {
+  @include jigsass-util(u-whs, $modifier: n);  // <-- white-space: normal
+  @include jigsass-util(u-whs, $modifier: pw, $from: large); // <-- white-space: pre-wrap from large bp and on.
+
+  ...
+}
+```
+
+Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man's dependency
+management.
+
+Developer communication is also assisted by including "dependencies" wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.
+
+As far as bloat goes, just don't worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.
+
+
+JigSass Text classes are responsive-enabled, using [JigSass MQ](https://txhawks.github.io/jigsass-tools-mq/)
+and the breakpoints defined in the [$jigsass-breakpoints](https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints) variable.
+
+Based on the breakpoint arguments passed to `jigsass-util` when including a white-space class,
+responsive modifiers are generated according to the following logic:
+
+```scss
+.u-whs--<modifier>[-[-from-<breakpoint-name>][-until-<breakpoint-name>][-misc-<breakpoint-name>]]
+```
+
+So, assuming the `medium`, `large` and `landscape` breakpoints are defined in `$jigsass-breakpoints`
+as `600px`, `1024px` and `(orientation: landscape)` respectively,
+
+```scss
+@include jigsass-util(u-whs, $modifier: nw);
+```
+will generate the `.u-whs--nw` class, which is not limited to any media-query.
+
+```scss
+@include jigsass-util(u-whs, $modifier: nw, $until: medium);
+```
+
+will generate the `.u-whs--nw--until-medium` class, which will be in effect at
+`(max-width: 37.49em)` and will override styles in the default class until that point.
+
+```scss
+@include jigsass-util(u-whs, $modifier: p, $from: large, $misc: landscape);
+```
+
+will generate the `.u-whs--p--from-large-when-landscape` class, which will go into
+effect at `(min-width: 64em) and (orientation: landscape)` and will override styles in the default
+class under these  conditions.
+
+
+**License:** MIT
+
+*/
+// stylelint-enable
+
+
+
+
+
+// -------------------------------------
+// Variables
+// -------------------------------------
+
+/// A constant used for generating white-space utility classes.
+/// ---
+/// @type Map
+/// ---
+$_jigsass-text-whs-vals: (
+  n: normal,
+  p: pre,
+  nw: nowrap,
+  pw: pre-wrap,
+  pl: pre-line,
+);
+
+
+// Used internally to ordering doclets
+$_jigsass-util-whs-i: 1;
+
+
+
+// -------------------------------------
+// Definitions
+// -------------------------------------
+
+@include jigsass-define-util(u-whs) {
+  @if (not $jigsass-util-modifier) {
+    @error 'jigsass-utils-text: #{$jigsass-util-name} must be passed A ' +
+      'value through a modifier.';
+  }
+  white-space: map-get($_jigsass-text-whs-vals, $jigsass-util-modifier);
+
+  $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
+  @if (not index($_doclet-store, $_doclet)) {
+    $_doclet-store: append($_doclet-store, $_doclet) !global;
+    // stylelint-disable
+
+/* ---
+section: White-space Utils
+title: White-space #{map-get($_jigsass-text-whs-vals, $jigsass-util-modifier)}
+order: #{$_jigsass-util-whs-i}
+---
+**#{$jigsass-util-name}--#{$jigsass-util-modifier}**
+
+A utility class for setting an element's `white-space` to #{map-get($_jigsass-text-whs-vals, $jigsass-util-modifier)}
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(#{$jigsass-util-name}, $modifier: #{$jigsass-util-modifier} [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo #{$jigsass-util-name}--#{$jigsass-util-modifier}'>
+  The white-space of      the text in thiselement is set to #{map-get($_jigsass-text-whs-vals, $jigsass-util-modifier)}.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+```
+*/
+    $_jigsass-util-whs-i: $_jigsass-util-whs-i + 1 !global;
+    // stylelint-enable
+  }
+}

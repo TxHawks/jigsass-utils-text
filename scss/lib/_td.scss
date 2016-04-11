@@ -1,0 +1,247 @@
+// *************************************
+//
+// # Text Decoration
+//
+// *************************************
+
+@charset 'UTF-8';
+
+// -------------------------------------
+// Dependencies
+// -------------------------------------
+
+@if (not mixin-exists(jigsass-define-util)) {
+  @error '`jigsass-utils-text` has a dependency on `jigsass-tools-selectors`. ' +
+    'Please import it before this file.';
+}
+
+
+
+
+
+// -------------------------------------
+// Introduction
+// -------------------------------------
+
+// stylelint-disable
+/* ---
+section: Text decoration Utils
+title: Introduction
+order: -10
+---
+
+A collection of dynamically generated text-decoration utility classes.
+
+Class names follow the [Emmet](http://docs.emmet.io/cheat-sheet/) abbreviation
+syntax, with colons (':') replaced by two dashes (`--`) to follow BEM naming
+conventions.
+
+#### Available classes
+
+  - `.u-td--n`: text-decoration: none
+  - `.u-td--u`: text-decoration: underline
+  - `.u-td--o`: text-decoration: overline
+  - `.u-td--l`: text-decoration: line-through
+
+
+  - `.u-td--n:hover`: text-decoration: none when hovered
+  - `.u-td--u:hover`: text-decoration: underline when hovered
+  - `.u-td--o:hover`: text-decoration: overline when hovered
+  - `.u-td--l:hover`: text-decoration: line-through when hovered
+
+
+  - `.u-td--n:focus`: text-decoration: none when focused
+  - `.u-td--u:focus`: text-decoration: underline when focused
+  - `.u-td--o:focus`: text-decoration: overline when focused
+  - `.u-td--l:focus`: text-decoration: line-through when focused
+
+
+  - `.u-td--n:active`: text-decoration: none when active
+  - `.u-td--u:active`: text-decoration: underline when active
+  - `.u-td--o:active`: text-decoration: overline when active
+  - `.u-td--l:active`: text-decoration: line-through when active
+
+#### Installation
+
+Using npm:
+
+```sh
+npm i -S jigsass-utils-text
+```
+
+#### Usage
+Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).
+
+```scss
+@import 'path/to/jigsass-utils-text/scss/index';
+```
+
+Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual text decoration
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside `.foo` and .`bar`):
+
+```scss
+// _c.foo.scss
+.foo {
+  @include jigsass-util(u-td, $modifier: u); // <-- text-decoration: underline
+
+  ...
+}
+```
+
+```scss
+// _c.bar.scss
+.bar {
+  @include jigsass-util(u-td, $modifier: n);  // <-- text-decoration: none
+  @include jigsass-util(u-td, $modifier: o, $from: large); // <-- text-decoration: overline from large bp and on.
+
+  ...
+}
+```
+
+Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man's dependency
+management.
+
+Developer communication is also assisted by including "dependencies" wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.
+
+As far as bloat goes, just don't worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.
+
+
+JigSass Text classes are responsive-enabled, using [JigSass MQ](https://txhawks.github.io/jigsass-tools-mq/)
+and the breakpoints defined in the [$jigsass-breakpoints](https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints) variable.
+
+Based on the breakpoint arguments passed to `jigsass-util` when including a text-decoration class,
+responsive modifiers are generated according to the following logic:
+
+```scss
+.u-td--<modifier>[-[-from-<breakpoint-name>][-until-<breakpoint-name>][-misc-<breakpoint-name>]]
+```
+
+So, assuming the `medium`, `large` and `landscape` breakpoints are defined in `$jigsass-breakpoints`
+as `600px`, `1024px` and `(orientation: landscape)` respectively,
+
+```scss
+@include jigsass-util(u-td, $modifier: n);
+```
+will generate the `.u-td--n` class, which is not limited to any media-query.
+
+```scss
+@include jigsass-util(u-td, $modifier: n, $until: medium);
+```
+
+will generate the `.u-td--n--until-medium` class, which will be in effect at
+`(max-width: 37.49em)` and will override styles in the default class until that point.
+
+```scss
+@include jigsass-util(u-td, $modifier: n, $from: large, $misc: landscape);
+```
+
+will generate the `.u-td--n--from-large-when-landscape` class, which will go into
+effect at `(min-width: 64em) and (orientation: landscape)` and will override styles in the default
+class under these  conditions.
+
+
+**License:** MIT
+
+*/
+// stylelint-enable
+
+
+
+
+
+// -------------------------------------
+// Variables
+// -------------------------------------
+
+/// A constant used for generating text-alignment utility classes.
+/// ---
+/// @type Map
+/// ---
+$_jigsass-text-decor: (
+  n: none,
+  u: underline,
+  o: overline,
+  l: line-through
+);
+
+
+// Used internally to ordering doclets
+$_jigsass-util-td-i: 1;
+
+
+
+// -------------------------------------
+// Definitions
+// -------------------------------------
+
+@include jigsass-define-util(u-td) {
+  @if (not $jigsass-util-modifier) {
+    @error 'jigsass-utils-text: #{$jigsass-util-name} must be passed A ' +
+      'value through a modifier.';
+  }
+
+  $_state: if(
+    str-index($jigsass-util-modifier, ':'),
+    str-slice($jigsass-util-modifier, str-index($jigsass-util-modifier, ':')),
+    ''
+  );
+  $_decor: map-get(
+    $_jigsass-text-decor,
+    if(
+      str-index($jigsass-util-modifier, ':'),
+      str-slice($jigsass-util-modifier, 1, str-index($jigsass-util-modifier, ':') - 1),
+      $jigsass-util-modifier
+    )
+  );
+
+  &#{$_state} {
+    text-decoration: $_decor;
+  }
+
+  $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
+  @if (not index($_doclet-store, $_doclet)) {
+    $_doclet-store: append($_doclet-store, $_doclet) !global;
+    // stylelint-disable
+
+/* ---
+section: Text Decoration Utils
+title: Text Decoration: #{$_decor}#{$_state}
+order: #{$_jigsass-util-td-i}
+---
+**.#{$jigsass-util-name}--#{$jigsass-util-modifier}**
+
+A utility class for adding #{$_decor} text decoration to an element#{if(
+    $_state != '',
+    when if($_state == active, active, $_state + ed),
+    ''
+  )}
+
+#### Include with:
+
+```scss
+@include jigsass-util(#{$jigsass-util-name}, $modifier: #{$jigsass-util-modifier} [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  #{$jigsass-util-name}--#{$jigsass-util-modifier}'>
+  This text has #{$_decor} text decoration #{if(
+    $_state != '',
+    when if($_state == active, active, $_state + ed),
+    ''
+  )}
+</p>
+```
+*/
+    $_jigsass-util-td-i: $_jigsass-util-td-i + 1 !global;
+    // stylelint-enable
+  }
+}

@@ -1,0 +1,216 @@
+// *************************************
+//
+// # Text Alignment
+//
+// *************************************
+
+@charset 'UTF-8';
+
+// -------------------------------------
+// Dependencies
+// -------------------------------------
+
+@if (not mixin-exists(jigsass-define-util)) {
+  @error '`jigsass-utils-text` has a dependency on `jigsass-tools-selectors`. ' +
+    'Please import it before this file.';
+}
+
+
+
+
+
+// -------------------------------------
+// Introduction
+// -------------------------------------
+
+// stylelint-disable
+/* ---
+section: Text Alignment Utils
+title: Introduction
+order: -10
+---
+
+A collection of dynamically generated text-alignment utility classes.
+
+Class names follow the [Emmet](http://docs.emmet.io/cheat-sheet/) abbreviation
+syntax, with colons (':') replaced by two dashes (`--`) to follow BEM naming
+conventions.
+
+#### Available classes
+
+  - `.u-va--sup`: vertical-align: super
+  - `.u-va--t`: vertical-align: top
+  - `.u-va--tt`: vertical-align: text-top
+  - `.u-va--m`: vertical-align: middle
+  - `.u-va--bl`: vertical-align: baseline
+  - `.u-va--b`: vertical-align: bottom
+  - `.u-va--tb`: vertical-align: text-bottom
+  - `.u-va--sub`: vertical-align: sub
+
+#### Installation
+
+Using npm:
+
+```sh
+npm i -S jigsass-utils-text
+```
+
+#### Usage
+Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).
+
+```scss
+@import 'path/to/jigsass-utils-text/scss/index';
+```
+
+Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual vertical alignment
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside `.foo` and .`bar`):
+
+```scss
+// _c.foo.scss
+.foo {
+  @include jigsass-util(u-va, $modifier: m); // <-- vertical-align: middle
+
+  ...
+}
+```
+
+```scss
+// _c.bar.scss
+.bar {
+  @include jigsass-util(u-va, $modifier: b);  // <-- vertical-align: bottom
+  @include jigsass-util(u-va, $modifier: t, $from: large); // <-- vertical-align: top from large bp and on.
+
+  ...
+}
+```
+
+Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man's dependency
+management.
+
+Developer communication is also assisted by including "dependencies" wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.
+
+As far as bloat goes, just don't worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.
+
+
+JigSass Text classes are responsive-enabled, using [JigSass MQ](https://txhawks.github.io/jigsass-tools-mq/)
+and the breakpoints defined in the [$jigsass-breakpoints](https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints) variable.
+
+Based on the breakpoint arguments passed to `jigsass-util` when including a vertical-alignment class,
+responsive modifiers are generated according to the following logic:
+
+```scss
+.u-va--<modifier>[-[-from-<breakpoint-name>][-until-<breakpoint-name>][-misc-<breakpoint-name>]]
+```
+
+So, assuming the `medium`, `large` and `landscape` breakpoints are defined in `$jigsass-breakpoints`
+as `600px`, `1024px` and `(orientation: landscape)` respectively,
+
+```scss
+@include jigsass-util(u-va, $modifier: bl);
+```
+will generate the `.u-va--bl` class, which is not limited to any media-query.
+
+```scss
+@include jigsass-util(u-va, $modifier: tt, $until: medium);
+```
+
+will generate the `.u-va--tt--until-medium` class, which will be in effect at
+`(max-width: 37.49em)` and will override styles in the default class until that point.
+
+```scss
+@include jigsass-util(u-va, $modifier: t, $from: large, $misc: landscape);
+```
+
+will generate the `.u-va--t--from-large-when-landscape` class, which will go into
+effect at `(min-width: 64em) and (orientation: landscape)` and will override styles in the default
+class under these  conditions.
+
+
+**License:** MIT
+
+*/
+// stylelint-enable
+
+
+
+
+
+// -------------------------------------
+// Variables
+// -------------------------------------
+
+/// A constant used for generating text-alignment utility classes.
+/// ---
+/// @type Map
+/// ---
+$_jigsass-text-va-vals: (
+  sup: super,
+  t: top,
+  tt: text-top,
+  m: middle,
+  bl: baseline,
+  b: bottom,
+  tb: text-bottom,
+  sub: sub
+);
+
+
+// Used internally to ordering doclets
+$_jigsass-util-va-i: 1;
+
+
+
+// -------------------------------------
+// Definitions
+// -------------------------------------
+
+@include jigsass-define-util(u-va) {
+  @if (not $jigsass-util-modifier) {
+    @error 'jigsass-utils-text: #{$jigsass-util-name} must be passed A ' +
+      'value through a modifier.';
+  }
+  vertical-align: map-get($_jigsass-text-va-vals, $jigsass-util-modifier);
+
+  $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
+  @if (not index($_doclet-store, $_doclet)) {
+    $_doclet-store: append($_doclet-store, $_doclet) !global;
+    // stylelint-disable
+
+/* ---
+section: vertical Alignment Utils
+title: V Align to #{map-get($_jigsass-text-va-vals, $jigsass-util-modifier)}
+order: #{$_jigsass-util-va-i}
+---
+**#{$jigsass-util-name}--#{$jigsass-util-modifier}**
+
+A utility class for vertically aligning elements to #{map-get($_jigsass-text-va-vals, $jigsass-util-modifier)}
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(#{$jigsass-util-name}, $modifier: #{$jigsass-util-modifier} [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo'>
+  <span class='#{$jigsass-util-name}--#{$jigsass-util-modifier}'>
+    The text in this element is vertically aligned to #{map-get($_jigsass-text-va-vals, $jigsass-util-modifier)}
+  </span>
+  <span class='fpo--va #{$jigsass-util-name}--#{$jigsass-util-modifier}'></span>
+</p>
+```
+*/
+    $_jigsass-util-va-i: $_jigsass-util-va-i + 1 !global;
+    // stylelint-enable
+  }
+}

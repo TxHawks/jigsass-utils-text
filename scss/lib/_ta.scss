@@ -1,0 +1,222 @@
+// *************************************
+//
+// # Text Alignment
+//
+// *************************************
+
+@charset 'UTF-8';
+
+// -------------------------------------
+// Dependencies
+// -------------------------------------
+
+@if (not mixin-exists(jigsass-define-util)) {
+  @error '`jigsass-utils-text` has a dependency on `jigsass-tools-selectors`. ' +
+    'Please import it before this file.';
+}
+
+
+
+
+
+// -------------------------------------
+// Introduction
+// -------------------------------------
+
+// stylelint-disable
+/* ---
+section: Text Alignment Utils
+title: Introduction
+order: -10
+---
+
+A collection of dynamically generated text-alignment utility classes.
+
+Class names follow the [Emmet](http://docs.emmet.io/cheat-sheet/) abbreviation
+syntax, with colons (':') replaced by two dashes (`--`) to follow BEM naming
+conventions.
+
+#### Available classes
+
+  - `.u-ta--start`: text-align: (left|right) (left in `LTR`, right in `RTL`)
+  - `.u-ta--l`: text-align: left
+  - `.u-ta--c`: text-align: center
+  - `.u-ta--end`: text-align: (right|left) (right in `LTR`, left in `RTL`)
+  - `.u-tr--r`: text-align: right
+  - `.u-ta--j`: text-align: justify
+
+#### Installation
+
+Using npm:
+
+```sh
+npm i -S jigsass-utils-text
+```
+
+#### Usage
+Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).
+
+```scss
+@import 'path/to/jigsass-utils-text/scss/index';
+```
+
+Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual text alignment
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside `.foo` and .`bar`):
+
+```scss
+// _c.foo.scss
+.foo {
+  @include jigsass-util(u-ta, $modifier: c); // <-- text-align: center
+
+  ...
+}
+```
+
+```scss
+// _c.bar.scss
+.bar {
+  @include jigsass-util(u-ta, $modifier: j);  // <-- text-align: justify
+  @include jigsass-util(u-ta, $modifier: r, $from: large); // <-- text-align: right from large bp and on.
+
+  ...
+}
+```
+
+Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man's dependency
+management.
+
+Developer communication is also assisted by including "dependencies" wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.
+
+As far as bloat goes, just don't worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.
+
+
+JigSass Text classes are responsive-enabled, using [JigSass MQ](https://txhawks.github.io/jigsass-tools-mq/)
+and the breakpoints defined in the [$jigsass-breakpoints](https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints) variable.
+
+Based on the breakpoint arguments passed to `jigsass-util` when including a text-alignment class,
+responsive modifiers are generated according to the following logic:
+
+```scss
+.u-ta--<modifier>[-[-from-<breakpoint-name>][-until-<breakpoint-name>][-misc-<breakpoint-name>]]
+```
+
+So, assuming the `medium`, `large` and `landscape` breakpoints are defined in `$jigsass-breakpoints`
+as `600px`, `1024px` and `(orientation: landscape)` respectively,
+
+```scss
+@include jigsass-util(u-ta, $modifier: end);
+```
+will generate the `.u-ta--end` class, which is not limited to any media-query.
+
+```scss
+@include jigsass-util(u-ta, $modifier: start, $until: medium);
+```
+
+will generate the `.u-ta--start--until-medium` class, which will be in effect at
+`(max-width: 37.49em)` and will override styles in the default class until that point.
+
+```scss
+@include jigsass-util(u-ta, $modifier: c, $from: large, $misc: landscape);
+```
+
+will generate the `.u-ta--c--from-large-when-landscape` class, which will go into
+effect at `(min-width: 64em) and (orientation: landscape)` and will override styles in the default
+class under these  conditions.
+
+
+**License:** MIT
+
+*/
+// stylelint-enable
+
+
+
+
+
+// -------------------------------------
+// Variables
+// -------------------------------------
+
+/// A constant used for generating text-alignment utility classes.
+/// ---
+/// @type Map
+/// ---
+$_jigsass-text-aligners: (
+  l: left,
+  c: center,
+  j: justify,
+  r: right,
+  start: start,
+  end: end
+);
+
+
+// Used internally to ordering doclets
+$_jigsass-util-ta-i: 1;
+
+
+
+// -------------------------------------
+// Definitions
+// -------------------------------------
+
+@include jigsass-define-util(u-ta) {
+  @if (not $jigsass-util-modifier) {
+    @error 'jigsass-utils-text: #{$jigsass-util-name} must be passed A ' +
+      'value through a modifier.';
+  }
+  @if (index(start end, $jigsass-util-modifier)) {
+    @include jigsass-bidi(text-align, $jigsass-util-modifier);
+  }
+  @else {
+    text-align: map-get($_jigsass-text-aligners, $jigsass-util-modifier);
+  }
+
+  $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
+  @if (not index($_doclet-store, $_doclet)) {
+    $_doclet-store: append($_doclet-store, $_doclet) !global;
+    // stylelint-disable
+
+/* ---
+section: Text Alignment Utils
+title: Align to #{map-get($_jigsass-text-aligners, $jigsass-util-modifier)}
+order: #{$_jigsass-util-ta-i}
+---
+**.#{$jigsass-util-name}--#{$jigsass-util-modifier}**
+
+#{if(
+  $jigsass-util-modifier == j,
+  A utility class for justifying blocks of text,
+  A utility class for aligning text to the horizontal map-get($_jigsass-text-aligners, $jigsass-util-modifier)
+)}
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(#{$jigsass-util-name}, $modifier: #{$jigsass-util-modifier} [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  #{$jigsass-util-name}--#{$jigsass-util-modifier}'>
+  The text in this element is #{if(
+    $jigsass-util-modifier == j,
+    justified,
+    aligned towards the horizontal map-get($_jigsass-text-aligners, $jigsass-util-modifier)
+  )}.
+</p>
+```
+*/
+    $_jigsass-util-ta-i: $_jigsass-util-ta-i + 1 !global;
+    // stylelint-enable
+  }
+}

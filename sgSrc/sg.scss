@@ -1,0 +1,101 @@
+// *************************************
+//
+// # jigsass-utils-text style guide generator
+// -> It is a best practice for JigSass modules to
+//    not automatically generate css and documentation
+//    on `@import`. Please use this file to enable css
+//    (and comments) generation.
+//
+//    Files in `sgSrc/assets` will be available
+//    for use in the style guide
+//
+// *************************************
+
+@charset 'UTF-8';
+
+// --------------------
+// Dependencies
+// --------------------
+@import '../node_modules/jigsass-tools-maps/scss/index';
+@import '../node_modules/jigsass-tools-mq/scss/index';
+@import '../node_modules/jigsass-tools-typography/scss/index';
+@import '../node_modules/jigsass-tools-strings/scss/index';
+@import '../node_modules/jigsass-tools-bidi/scss/index';
+@import '../node_modules/jigsass-tools-selectors/scss/index';
+
+
+
+
+
+// --------------------
+// Styles
+// --------------------
+
+$_ta: start l end r c j;
+$_td: n u o l;
+$_va: t m b tt tb bl sup sub;
+$_whs: n p nw pw pl;
+
+@each $alignment in $_ta {
+  @include jigsass-util(u-ta, $modifier: $alignment);
+}
+
+@each $decoration in $_td {
+  @include jigsass-util(u-td, $modifier: '#{$decoration}:hover');
+  @include jigsass-util(u-td, $modifier: $decoration);
+}
+
+@each $alignment in $_va {
+  @include jigsass-util(u-va, $modifier: $alignment);
+}
+
+@each $method in $_whs {
+  @include jigsass-util(u-whs, $modifier: $method);
+}
+
+@import 'index.scss';
+
+
+
+// --------------------
+// Demo Styles
+// --------------------
+
+$jigsass-mdcss-brand-color: #09a5d9;
+@include jigsass-set-baseline;
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0 !important;
+}
+
+.fpo {
+   background-color: $jigsass-mdcss-brand-color;
+   color: #fff;
+   padding: 1rem;
+}
+
+.fpo--va {
+  background-color: paleturquoise;
+   display: inline-block;
+   line-height: 8rem;
+   height: 8rem;
+   width: 6rem;
+}
+
+figure,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
