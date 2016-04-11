@@ -1,0 +1,1311 @@
+/* ---
+section: Text Alignment Utils
+title: Introduction
+order: -10
+---
+
+A collection of dynamically generated text-alignment utility classes.
+
+Class names follow the [Emmet](http://docs.emmet.io/cheat-sheet/) abbreviation
+syntax, with colons (':') replaced by two dashes (`--`) to follow BEM naming
+conventions.
+
+#### Available classes
+
+  - `.u-ta--start`: text-align: (left|right) (left in `LTR`, right in `RTL`)
+  - `.u-ta--l`: text-align: left
+  - `.u-ta--c`: text-align: center
+  - `.u-ta--end`: text-align: (right|left) (right in `LTR`, left in `RTL`)
+  - `.u-tr--r`: text-align: right
+  - `.u-ta--j`: text-align: justify
+
+#### Installation
+
+Using npm:
+
+```sh
+npm i -S jigsass-utils-text
+```
+
+#### Usage
+Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).
+
+```scss
+@import 'path/to/jigsass-utils-text/scss/index';
+```
+
+Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual text alignment
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside `.foo` and .`bar`):
+
+```scss
+// _c.foo.scss
+.foo {
+  @include jigsass-util(u-ta, $modifier: c); // <-- text-align: center
+
+  ...
+}
+```
+
+```scss
+// _c.bar.scss
+.bar {
+  @include jigsass-util(u-ta, $modifier: j);  // <-- text-align: justify
+  @include jigsass-util(u-ta, $modifier: r, $from: large); // <-- text-align: right from large bp and on.
+
+  ...
+}
+```
+
+Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man's dependency
+management.
+
+Developer communication is also assisted by including "dependencies" wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.
+
+As far as bloat goes, just don't worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.
+
+
+JigSass Text classes are responsive-enabled, using [JigSass MQ](https://txhawks.github.io/jigsass-tools-mq/)
+and the breakpoints defined in the [$jigsass-breakpoints](https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints) variable.
+
+Based on the breakpoint arguments passed to `jigsass-util` when including a text-alignment class,
+responsive modifiers are generated according to the following logic:
+
+```scss
+.u-ta--<modifier>[-[-from-<breakpoint-name>][-until-<breakpoint-name>][-misc-<breakpoint-name>]]
+```
+
+So, assuming the `medium`, `large` and `landscape` breakpoints are defined in `$jigsass-breakpoints`
+as `600px`, `1024px` and `(orientation: landscape)` respectively,
+
+```scss
+@include jigsass-util(u-ta, $modifier: end);
+```
+will generate the `.u-ta--end` class, which is not limited to any media-query.
+
+```scss
+@include jigsass-util(u-ta, $modifier: start, $until: medium);
+```
+
+will generate the `.u-ta--start--until-medium` class, which will be in effect at
+`(max-width: 37.49em)` and will override styles in the default class until that point.
+
+```scss
+@include jigsass-util(u-ta, $modifier: c, $from: large, $misc: landscape);
+```
+
+will generate the `.u-ta--c--from-large-when-landscape` class, which will go into
+effect at `(min-width: 64em) and (orientation: landscape)` and will override styles in the default
+class under these  conditions.
+
+
+**License:** MIT
+
+*/
+.u-ta--start {
+  text-align: left;
+  /* ---
+section: Text Alignment Utils
+title: Align to start
+order: 1
+---
+**.u-ta--start**
+
+A utility class for aligning text to the horizontal start
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-ta, $modifier: start [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-ta--start'>
+  The text in this element is aligned towards the horizontal start.
+</p>
+```
+*/
+}
+
+.u-ta--l {
+  text-align: left;
+  /* ---
+section: Text Alignment Utils
+title: Align to left
+order: 2
+---
+**.u-ta--l**
+
+A utility class for aligning text to the horizontal left
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-ta, $modifier: l [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-ta--l'>
+  The text in this element is aligned towards the horizontal left.
+</p>
+```
+*/
+}
+
+.u-ta--end {
+  text-align: right;
+  /* ---
+section: Text Alignment Utils
+title: Align to end
+order: 3
+---
+**.u-ta--end**
+
+A utility class for aligning text to the horizontal end
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-ta, $modifier: end [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-ta--end'>
+  The text in this element is aligned towards the horizontal end.
+</p>
+```
+*/
+}
+
+.u-ta--r {
+  text-align: right;
+  /* ---
+section: Text Alignment Utils
+title: Align to right
+order: 4
+---
+**.u-ta--r**
+
+A utility class for aligning text to the horizontal right
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-ta, $modifier: r [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-ta--r'>
+  The text in this element is aligned towards the horizontal right.
+</p>
+```
+*/
+}
+
+.u-ta--c {
+  text-align: center;
+  /* ---
+section: Text Alignment Utils
+title: Align to center
+order: 5
+---
+**.u-ta--c**
+
+A utility class for aligning text to the horizontal center
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-ta, $modifier: c [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-ta--c'>
+  The text in this element is aligned towards the horizontal center.
+</p>
+```
+*/
+}
+
+.u-ta--j {
+  text-align: justify;
+  /* ---
+section: Text Alignment Utils
+title: Align to justify
+order: 6
+---
+**.u-ta--j**
+
+A utility class for justifying blocks of text
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-ta, $modifier: j [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-ta--j'>
+  The text in this element is justified.
+</p>
+```
+*/
+}
+
+/* ---
+section: Text decoration Utils
+title: Introduction
+order: -10
+---
+
+A collection of dynamically generated text-decoration utility classes.
+
+Class names follow the [Emmet](http://docs.emmet.io/cheat-sheet/) abbreviation
+syntax, with colons (':') replaced by two dashes (`--`) to follow BEM naming
+conventions.
+
+#### Available classes
+
+  - `.u-td--n`: text-decoration: none
+  - `.u-td--u`: text-decoration: underline
+  - `.u-td--o`: text-decoration: overline
+  - `.u-td--l`: text-decoration: line-through
+
+
+  - `.u-td--n:hover`: text-decoration: none when hovered
+  - `.u-td--u:hover`: text-decoration: underline when hovered
+  - `.u-td--o:hover`: text-decoration: overline when hovered
+  - `.u-td--l:hover`: text-decoration: line-through when hovered
+
+
+  - `.u-td--n:focus`: text-decoration: none when focused
+  - `.u-td--u:focus`: text-decoration: underline when focused
+  - `.u-td--o:focus`: text-decoration: overline when focused
+  - `.u-td--l:focus`: text-decoration: line-through when focused
+
+
+  - `.u-td--n:active`: text-decoration: none when active
+  - `.u-td--u:active`: text-decoration: underline when active
+  - `.u-td--o:active`: text-decoration: overline when active
+  - `.u-td--l:active`: text-decoration: line-through when active
+
+#### Installation
+
+Using npm:
+
+```sh
+npm i -S jigsass-utils-text
+```
+
+#### Usage
+Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).
+
+```scss
+@import 'path/to/jigsass-utils-text/scss/index';
+```
+
+Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual text decoration
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside `.foo` and .`bar`):
+
+```scss
+// _c.foo.scss
+.foo {
+  @include jigsass-util(u-td, $modifier: u); // <-- text-decoration: underline
+
+  ...
+}
+```
+
+```scss
+// _c.bar.scss
+.bar {
+  @include jigsass-util(u-td, $modifier: n);  // <-- text-decoration: none
+  @include jigsass-util(u-td, $modifier: o, $from: large); // <-- text-decoration: overline from large bp and on.
+
+  ...
+}
+```
+
+Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man's dependency
+management.
+
+Developer communication is also assisted by including "dependencies" wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.
+
+As far as bloat goes, just don't worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.
+
+
+JigSass Text classes are responsive-enabled, using [JigSass MQ](https://txhawks.github.io/jigsass-tools-mq/)
+and the breakpoints defined in the [$jigsass-breakpoints](https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints) variable.
+
+Based on the breakpoint arguments passed to `jigsass-util` when including a text-decoration class,
+responsive modifiers are generated according to the following logic:
+
+```scss
+.u-td--<modifier>[-[-from-<breakpoint-name>][-until-<breakpoint-name>][-misc-<breakpoint-name>]]
+```
+
+So, assuming the `medium`, `large` and `landscape` breakpoints are defined in `$jigsass-breakpoints`
+as `600px`, `1024px` and `(orientation: landscape)` respectively,
+
+```scss
+@include jigsass-util(u-td, $modifier: n);
+```
+will generate the `.u-td--n` class, which is not limited to any media-query.
+
+```scss
+@include jigsass-util(u-td, $modifier: n, $until: medium);
+```
+
+will generate the `.u-td--n--until-medium` class, which will be in effect at
+`(max-width: 37.49em)` and will override styles in the default class until that point.
+
+```scss
+@include jigsass-util(u-td, $modifier: n, $from: large, $misc: landscape);
+```
+
+will generate the `.u-td--n--from-large-when-landscape` class, which will go into
+effect at `(min-width: 64em) and (orientation: landscape)` and will override styles in the default
+class under these  conditions.
+
+
+**License:** MIT
+
+*/
+.u-td--n\:hover {
+  /* ---
+section: Text Decoration Utils
+title: Text Decoration: none:hover
+order: 1
+---
+**.u-td--n:hover**
+
+A utility class for adding none text decoration to an elementwhen :hovered
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-td, $modifier: n:hover [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-td--n:hover'>
+  This text has none text decoration when :hovered
+</p>
+```
+*/
+}
+
+.u-td--n\:hover:hover {
+  text-decoration: none;
+}
+
+.u-td--n {
+  /* ---
+section: Text Decoration Utils
+title: Text Decoration: none
+order: 2
+---
+**.u-td--n**
+
+A utility class for adding none text decoration to an element
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-td, $modifier: n [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-td--n'>
+  This text has none text decoration 
+</p>
+```
+*/
+}
+
+.u-td--n {
+  text-decoration: none;
+}
+
+.u-td--u\:hover {
+  /* ---
+section: Text Decoration Utils
+title: Text Decoration: underline:hover
+order: 3
+---
+**.u-td--u:hover**
+
+A utility class for adding underline text decoration to an elementwhen :hovered
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-td, $modifier: u:hover [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-td--u:hover'>
+  This text has underline text decoration when :hovered
+</p>
+```
+*/
+}
+
+.u-td--u\:hover:hover {
+  text-decoration: underline;
+}
+
+.u-td--u {
+  /* ---
+section: Text Decoration Utils
+title: Text Decoration: underline
+order: 4
+---
+**.u-td--u**
+
+A utility class for adding underline text decoration to an element
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-td, $modifier: u [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-td--u'>
+  This text has underline text decoration 
+</p>
+```
+*/
+}
+
+.u-td--u {
+  text-decoration: underline;
+}
+
+.u-td--o\:hover {
+  /* ---
+section: Text Decoration Utils
+title: Text Decoration: overline:hover
+order: 5
+---
+**.u-td--o:hover**
+
+A utility class for adding overline text decoration to an elementwhen :hovered
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-td, $modifier: o:hover [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-td--o:hover'>
+  This text has overline text decoration when :hovered
+</p>
+```
+*/
+}
+
+.u-td--o\:hover:hover {
+  text-decoration: overline;
+}
+
+.u-td--o {
+  /* ---
+section: Text Decoration Utils
+title: Text Decoration: overline
+order: 6
+---
+**.u-td--o**
+
+A utility class for adding overline text decoration to an element
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-td, $modifier: o [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-td--o'>
+  This text has overline text decoration 
+</p>
+```
+*/
+}
+
+.u-td--o {
+  text-decoration: overline;
+}
+
+.u-td--l\:hover {
+  /* ---
+section: Text Decoration Utils
+title: Text Decoration: line-through:hover
+order: 7
+---
+**.u-td--l:hover**
+
+A utility class for adding line-through text decoration to an elementwhen :hovered
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-td, $modifier: l:hover [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-td--l:hover'>
+  This text has line-through text decoration when :hovered
+</p>
+```
+*/
+}
+
+.u-td--l\:hover:hover {
+  text-decoration: line-through;
+}
+
+.u-td--l {
+  /* ---
+section: Text Decoration Utils
+title: Text Decoration: line-through
+order: 8
+---
+**.u-td--l**
+
+A utility class for adding line-through text decoration to an element
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-td, $modifier: l [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo  u-td--l'>
+  This text has line-through text decoration 
+</p>
+```
+*/
+}
+
+.u-td--l {
+  text-decoration: line-through;
+}
+
+/* ---
+section: Text Alignment Utils
+title: Introduction
+order: -10
+---
+
+A collection of dynamically generated text-alignment utility classes.
+
+Class names follow the [Emmet](http://docs.emmet.io/cheat-sheet/) abbreviation
+syntax, with colons (':') replaced by two dashes (`--`) to follow BEM naming
+conventions.
+
+#### Available classes
+
+  - `.u-va--sup`: vertical-align: super
+  - `.u-va--t`: vertical-align: top
+  - `.u-va--tt`: vertical-align: text-top
+  - `.u-va--m`: vertical-align: middle
+  - `.u-va--bl`: vertical-align: baseline
+  - `.u-va--b`: vertical-align: bottom
+  - `.u-va--tb`: vertical-align: text-bottom
+  - `.u-va--sub`: vertical-align: sub
+
+#### Installation
+
+Using npm:
+
+```sh
+npm i -S jigsass-utils-text
+```
+
+#### Usage
+Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).
+
+```scss
+@import 'path/to/jigsass-utils-text/scss/index';
+```
+
+Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual vertical alignment
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside `.foo` and .`bar`):
+
+```scss
+// _c.foo.scss
+.foo {
+  @include jigsass-util(u-va, $modifier: m); // <-- vertical-align: middle
+
+  ...
+}
+```
+
+```scss
+// _c.bar.scss
+.bar {
+  @include jigsass-util(u-va, $modifier: b);  // <-- vertical-align: bottom
+  @include jigsass-util(u-va, $modifier: t, $from: large); // <-- vertical-align: top from large bp and on.
+
+  ...
+}
+```
+
+Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man's dependency
+management.
+
+Developer communication is also assisted by including "dependencies" wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.
+
+As far as bloat goes, just don't worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.
+
+
+JigSass Text classes are responsive-enabled, using [JigSass MQ](https://txhawks.github.io/jigsass-tools-mq/)
+and the breakpoints defined in the [$jigsass-breakpoints](https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints) variable.
+
+Based on the breakpoint arguments passed to `jigsass-util` when including a vertical-alignment class,
+responsive modifiers are generated according to the following logic:
+
+```scss
+.u-va--<modifier>[-[-from-<breakpoint-name>][-until-<breakpoint-name>][-misc-<breakpoint-name>]]
+```
+
+So, assuming the `medium`, `large` and `landscape` breakpoints are defined in `$jigsass-breakpoints`
+as `600px`, `1024px` and `(orientation: landscape)` respectively,
+
+```scss
+@include jigsass-util(u-va, $modifier: bl);
+```
+will generate the `.u-va--bl` class, which is not limited to any media-query.
+
+```scss
+@include jigsass-util(u-va, $modifier: tt, $until: medium);
+```
+
+will generate the `.u-va--tt--until-medium` class, which will be in effect at
+`(max-width: 37.49em)` and will override styles in the default class until that point.
+
+```scss
+@include jigsass-util(u-va, $modifier: t, $from: large, $misc: landscape);
+```
+
+will generate the `.u-va--t--from-large-when-landscape` class, which will go into
+effect at `(min-width: 64em) and (orientation: landscape)` and will override styles in the default
+class under these  conditions.
+
+
+**License:** MIT
+
+*/
+.u-va--t {
+  vertical-align: top;
+  /* ---
+section: vertical Alignment Utils
+title: V Align to top
+order: 1
+---
+**u-va--t**
+
+A utility class for vertically aligning elements to top
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-va, $modifier: t [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo'>
+  <span class='u-va--t'>
+    The text in this element is vertically aligned to top
+  </span>
+  <span class='fpo--va u-va--t'></span>
+</p>
+```
+*/
+}
+
+.u-va--m {
+  vertical-align: middle;
+  /* ---
+section: vertical Alignment Utils
+title: V Align to middle
+order: 2
+---
+**u-va--m**
+
+A utility class for vertically aligning elements to middle
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-va, $modifier: m [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo'>
+  <span class='u-va--m'>
+    The text in this element is vertically aligned to middle
+  </span>
+  <span class='fpo--va u-va--m'></span>
+</p>
+```
+*/
+}
+
+.u-va--b {
+  vertical-align: bottom;
+  /* ---
+section: vertical Alignment Utils
+title: V Align to bottom
+order: 3
+---
+**u-va--b**
+
+A utility class for vertically aligning elements to bottom
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-va, $modifier: b [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo'>
+  <span class='u-va--b'>
+    The text in this element is vertically aligned to bottom
+  </span>
+  <span class='fpo--va u-va--b'></span>
+</p>
+```
+*/
+}
+
+.u-va--tt {
+  vertical-align: text-top;
+  /* ---
+section: vertical Alignment Utils
+title: V Align to text-top
+order: 4
+---
+**u-va--tt**
+
+A utility class for vertically aligning elements to text-top
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-va, $modifier: tt [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo'>
+  <span class='u-va--tt'>
+    The text in this element is vertically aligned to text-top
+  </span>
+  <span class='fpo--va u-va--tt'></span>
+</p>
+```
+*/
+}
+
+.u-va--tb {
+  vertical-align: text-bottom;
+  /* ---
+section: vertical Alignment Utils
+title: V Align to text-bottom
+order: 5
+---
+**u-va--tb**
+
+A utility class for vertically aligning elements to text-bottom
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-va, $modifier: tb [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo'>
+  <span class='u-va--tb'>
+    The text in this element is vertically aligned to text-bottom
+  </span>
+  <span class='fpo--va u-va--tb'></span>
+</p>
+```
+*/
+}
+
+.u-va--bl {
+  vertical-align: baseline;
+  /* ---
+section: vertical Alignment Utils
+title: V Align to baseline
+order: 6
+---
+**u-va--bl**
+
+A utility class for vertically aligning elements to baseline
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-va, $modifier: bl [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo'>
+  <span class='u-va--bl'>
+    The text in this element is vertically aligned to baseline
+  </span>
+  <span class='fpo--va u-va--bl'></span>
+</p>
+```
+*/
+}
+
+.u-va--sup {
+  vertical-align: super;
+  /* ---
+section: vertical Alignment Utils
+title: V Align to super
+order: 7
+---
+**u-va--sup**
+
+A utility class for vertically aligning elements to super
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-va, $modifier: sup [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo'>
+  <span class='u-va--sup'>
+    The text in this element is vertically aligned to super
+  </span>
+  <span class='fpo--va u-va--sup'></span>
+</p>
+```
+*/
+}
+
+.u-va--sub {
+  vertical-align: sub;
+  /* ---
+section: vertical Alignment Utils
+title: V Align to sub
+order: 8
+---
+**u-va--sub**
+
+A utility class for vertically aligning elements to sub
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-va, $modifier: sub [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo'>
+  <span class='u-va--sub'>
+    The text in this element is vertically aligned to sub
+  </span>
+  <span class='fpo--va u-va--sub'></span>
+</p>
+```
+*/
+}
+
+/* ---
+section: White-space Utils
+title: Introduction
+order: -10
+---
+
+A collection of dynamically generated white-space utility classes.
+
+Class names follow the [Emmet](http://docs.emmet.io/cheat-sheet/) abbreviation
+syntax, with colons (':') replaced by two dashes (`--`) to follow BEM naming
+conventions.
+
+#### Available classes
+
+  - `.u-whs--n`: white-space: normal
+  - `.u-whs--p`: white-space: pre
+  - `.u-whs--nw`: white-space: nowrap
+  - `.u-whs--pw`: white-space: pre-wrap
+  - `.u-whs--pl`: white-space: pre-line
+
+#### Installation
+
+Using npm:
+
+```sh
+npm i -S jigsass-utils-text
+```
+
+#### Usage
+Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).
+
+```scss
+@import 'path/to/jigsass-utils-text/scss/index';
+```
+
+Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual white-space
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside `.foo` and .`bar`):
+
+```scss
+// _c.foo.scss
+.foo {
+  @include jigsass-util(u-whs, $modifier: nw); // <-- white-space: nowrap
+
+  ...
+}
+```
+
+```scss
+// _c.bar.scss
+.bar {
+  @include jigsass-util(u-whs, $modifier: n);  // <-- white-space: normal
+  @include jigsass-util(u-whs, $modifier: pw, $from: large); // <-- white-space: pre-wrap from large bp and on.
+
+  ...
+}
+```
+
+Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man's dependency
+management.
+
+Developer communication is also assisted by including "dependencies" wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.
+
+As far as bloat goes, just don't worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.
+
+
+JigSass Text classes are responsive-enabled, using [JigSass MQ](https://txhawks.github.io/jigsass-tools-mq/)
+and the breakpoints defined in the [$jigsass-breakpoints](https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints) variable.
+
+Based on the breakpoint arguments passed to `jigsass-util` when including a white-space class,
+responsive modifiers are generated according to the following logic:
+
+```scss
+.u-whs--<modifier>[-[-from-<breakpoint-name>][-until-<breakpoint-name>][-misc-<breakpoint-name>]]
+```
+
+So, assuming the `medium`, `large` and `landscape` breakpoints are defined in `$jigsass-breakpoints`
+as `600px`, `1024px` and `(orientation: landscape)` respectively,
+
+```scss
+@include jigsass-util(u-whs, $modifier: nw);
+```
+will generate the `.u-whs--nw` class, which is not limited to any media-query.
+
+```scss
+@include jigsass-util(u-whs, $modifier: nw, $until: medium);
+```
+
+will generate the `.u-whs--nw--until-medium` class, which will be in effect at
+`(max-width: 37.49em)` and will override styles in the default class until that point.
+
+```scss
+@include jigsass-util(u-whs, $modifier: p, $from: large, $misc: landscape);
+```
+
+will generate the `.u-whs--p--from-large-when-landscape` class, which will go into
+effect at `(min-width: 64em) and (orientation: landscape)` and will override styles in the default
+class under these  conditions.
+
+
+**License:** MIT
+
+*/
+.u-whs--n {
+  white-space: normal;
+  /* ---
+section: White-space Utils
+title: White-space normal
+order: 1
+---
+**u-whs--n**
+
+A utility class for setting an element's `white-space` to normal
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-whs, $modifier: n [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo u-whs--n'>
+  The white-space of      the text in thiselement is set to normal.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+```
+*/
+}
+
+.u-whs--p {
+  white-space: pre;
+  /* ---
+section: White-space Utils
+title: White-space pre
+order: 2
+---
+**u-whs--p**
+
+A utility class for setting an element's `white-space` to pre
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-whs, $modifier: p [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo u-whs--p'>
+  The white-space of      the text in thiselement is set to pre.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+```
+*/
+}
+
+.u-whs--nw {
+  white-space: nowrap;
+  /* ---
+section: White-space Utils
+title: White-space nowrap
+order: 3
+---
+**u-whs--nw**
+
+A utility class for setting an element's `white-space` to nowrap
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-whs, $modifier: nw [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo u-whs--nw'>
+  The white-space of      the text in thiselement is set to nowrap.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+```
+*/
+}
+
+.u-whs--pw {
+  white-space: pre-wrap;
+  /* ---
+section: White-space Utils
+title: White-space pre-wrap
+order: 4
+---
+**u-whs--pw**
+
+A utility class for setting an element's `white-space` to pre-wrap
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-whs, $modifier: pw [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo u-whs--pw'>
+  The white-space of      the text in thiselement is set to pre-wrap.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+```
+*/
+}
+
+.u-whs--pl {
+  white-space: pre-line;
+  /* ---
+section: White-space Utils
+title: White-space pre-line
+order: 5
+---
+**u-whs--pl**
+
+A utility class for setting an element's `white-space` to pre-line
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-whs, $modifier: pl [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo u-whs--pl'>
+  The white-space of      the text in thiselement is set to pre-line.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+```
+*/
+}
+
+html {
+  font-size: 37.5%;
+}
+
+body {
+  font-size: 2.6666666667em;
+  line-height: 4rem;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0 !important;
+}
+
+.fpo {
+  background-color: #09a5d9;
+  color: #fff;
+  padding: 1rem;
+}
+
+.fpo--va {
+  background-color: paleturquoise;
+  display: inline-block;
+  line-height: 8rem;
+  height: 8rem;
+  width: 6rem;
+}
+
+figure,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}

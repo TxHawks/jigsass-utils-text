@@ -1,0 +1,1105 @@
+<!doctype html>
+<title>jigsass-utils-text</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="style.css?05" rel="stylesheet">
+<link href="jigsass-logo.png" rel="shortcut icon">
+<script type="text/javascript">WebFontConfig={google:{families:["Roboto:400,100,300,500:latin"]}},function(){var e=document.createElement("script");e.src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js",e.type="text/javascript",e.async="true";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();</script>
+<script>examples={"base":"","target":"_self","css":["assets/sg.css"],"js":[],"bodyjs":[],"htmlcss":"background:none;border:0;clip:auto;display:block;height:auto;margin:0;padding:0;position:static;width:auto","bodycss":"background:none;border:0;clip:auto;display:block;height:auto;margin:0;padding:0;position:static;width:auto"};</script>
+
+<header>
+	<nav>
+		<img src="jigsass-logo.png" alt="jigsass-utils-text">
+		
+	<ul>
+		
+				<li>
+					<a href="#text-alignment-utils"><span>Text Alignment Utils</span></a>
+					
+	<ul>
+		
+				<li>
+					<a href="#introduction"><span>Introduction</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#introduction"><span>Introduction</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#align-to-start"><span>Align to start</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#align-to-left"><span>Align to left</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#align-to-end"><span>Align to end</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#align-to-right"><span>Align to right</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#align-to-center"><span>Align to center</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#align-to-justify"><span>Align to justify</span></a>
+					
+				</li>
+				
+	</ul>
+	
+				</li>
+				
+				<li>
+					<a href="#text-decoration-utils"><span>Text decoration Utils</span></a>
+					
+	<ul>
+		
+				<li>
+					<a href="#introduction"><span>Introduction</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#text-decoration-nonehover"><span>Text Decoration: none:hover</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#text-decoration-none"><span>Text Decoration: none</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#text-decoration-underlinehover"><span>Text Decoration: underline:hover</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#text-decoration-underline"><span>Text Decoration: underline</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#text-decoration-overlinehover"><span>Text Decoration: overline:hover</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#text-decoration-overline"><span>Text Decoration: overline</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#text-decoration-line-throughhover"><span>Text Decoration: line-through:hover</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#text-decoration-line-through"><span>Text Decoration: line-through</span></a>
+					
+				</li>
+				
+	</ul>
+	
+				</li>
+				
+				<li>
+					<a href="#vertical-alignment-utils"><span>vertical Alignment Utils</span></a>
+					
+	<ul>
+		
+				<li>
+					<a href="#v-align-to-top"><span>V Align to top</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#v-align-to-middle"><span>V Align to middle</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#v-align-to-bottom"><span>V Align to bottom</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#v-align-to-text-top"><span>V Align to text-top</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#v-align-to-text-bottom"><span>V Align to text-bottom</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#v-align-to-baseline"><span>V Align to baseline</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#v-align-to-super"><span>V Align to super</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#v-align-to-sub"><span>V Align to sub</span></a>
+					
+				</li>
+				
+	</ul>
+	
+				</li>
+				
+				<li>
+					<a href="#white-space-utils"><span>White-space Utils</span></a>
+					
+	<ul>
+		
+				<li>
+					<a href="#introduction"><span>Introduction</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#white-space-normal"><span>White-space normal</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#white-space-pre"><span>White-space pre</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#white-space-nowrap"><span>White-space nowrap</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#white-space-pre-wrap"><span>White-space pre-wrap</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#white-space-pre-line"><span>White-space pre-line</span></a>
+					
+				</li>
+				
+	</ul>
+	
+				</li>
+				
+	</ul>
+	
+	</nav>
+</header>
+
+<main>
+	
+		<section id="text-alignment-utils">
+			<h2>Text Alignment Utils</h2>
+			<div>
+				
+				
+		<section id="introduction">
+			<h3>Introduction</h3>
+			<div>
+				<p>A collection of dynamically generated text-alignment utility classes.</p>
+<p>Class names follow the <a href="http://docs.emmet.io/cheat-sheet/">Emmet</a> abbreviation
+syntax, with colons (&#39;:&#39;) replaced by two dashes (<code>--</code>) to follow BEM naming
+conventions.</p>
+<h4 id="available-classes">Available classes</h4>
+<ul>
+<li><code>.u-ta--start</code>: text-align: (left|right) (left in <code>LTR</code>, right in <code>RTL</code>)</li>
+<li><code>.u-ta--l</code>: text-align: left</li>
+<li><code>.u-ta--c</code>: text-align: center</li>
+<li><code>.u-ta--end</code>: text-align: (right|left) (right in <code>LTR</code>, left in <code>RTL</code>)</li>
+<li><code>.u-tr--r</code>: text-align: right</li>
+<li><code>.u-ta--j</code>: text-align: justify</li>
+</ul>
+<h4 id="installation">Installation</h4>
+<p>Using npm:</p>
+<pre><code class="lang-sh">npm i -S jigsass-utils-text
+</code></pre>
+<h4 id="usage">Usage</h4>
+<p>Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).</p>
+<pre><code class="lang-scss">@import &#39;path/to/jigsass-utils-text/scss/index&#39;;
+</code></pre>
+<p>Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual text alignment
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside <code>.foo</code> and .<code>bar</code>):</p>
+<pre><code class="lang-scss">// _c.foo.scss
+.foo {
+  @include jigsass-util(u-ta, $modifier: c); // &lt;-- text-align: center
+
+  ...
+}
+</code></pre>
+<pre><code class="lang-scss">// _c.bar.scss
+.bar {
+  @include jigsass-util(u-ta, $modifier: j);  // &lt;-- text-align: justify
+  @include jigsass-util(u-ta, $modifier: r, $from: large); // &lt;-- text-align: right from large bp and on.
+
+  ...
+}
+</code></pre>
+<p>Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man&#39;s dependency
+management.</p>
+<p>Developer communication is also assisted by including &quot;dependencies&quot; wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.</p>
+<p>As far as bloat goes, just don&#39;t worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.</p>
+<p>JigSass Text classes are responsive-enabled, using <a href="https://txhawks.github.io/jigsass-tools-mq/">JigSass MQ</a>
+and the breakpoints defined in the <a href="https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints">$jigsass-breakpoints</a> variable.</p>
+<p>Based on the breakpoint arguments passed to <code>jigsass-util</code> when including a text-alignment class,
+responsive modifiers are generated according to the following logic:</p>
+<pre><code class="lang-scss">.u-ta--&lt;modifier&gt;[-[-from-&lt;breakpoint-name&gt;][-until-&lt;breakpoint-name&gt;][-misc-&lt;breakpoint-name&gt;]]
+</code></pre>
+<p>So, assuming the <code>medium</code>, <code>large</code> and <code>landscape</code> breakpoints are defined in <code>$jigsass-breakpoints</code>
+as <code>600px</code>, <code>1024px</code> and <code>(orientation: landscape)</code> respectively,</p>
+<pre><code class="lang-scss">@include jigsass-util(u-ta, $modifier: end);
+</code></pre>
+<p>will generate the <code>.u-ta--end</code> class, which is not limited to any media-query.</p>
+<pre><code class="lang-scss">@include jigsass-util(u-ta, $modifier: start, $until: medium);
+</code></pre>
+<p>will generate the <code>.u-ta--start--until-medium</code> class, which will be in effect at
+<code>(max-width: 37.49em)</code> and will override styles in the default class until that point.</p>
+<pre><code class="lang-scss">@include jigsass-util(u-ta, $modifier: c, $from: large, $misc: landscape);
+</code></pre>
+<p>will generate the <code>.u-ta--c--from-large-when-landscape</code> class, which will go into
+effect at <code>(min-width: 64em) and (orientation: landscape)</code> and will override styles in the default
+class under these  conditions.</p>
+<p><strong>License:</strong> MIT</p>
+
+				
+			</div>
+		</section>
+		
+		<section id="introduction">
+			<h3>Introduction</h3>
+			<div>
+				<p>A collection of dynamically generated text-alignment utility classes.</p>
+<p>Class names follow the <a href="http://docs.emmet.io/cheat-sheet/">Emmet</a> abbreviation
+syntax, with colons (&#39;:&#39;) replaced by two dashes (<code>--</code>) to follow BEM naming
+conventions.</p>
+<h4 id="available-classes">Available classes</h4>
+<ul>
+<li><code>.u-va--sup</code>: vertical-align: super</li>
+<li><code>.u-va--t</code>: vertical-align: top</li>
+<li><code>.u-va--tt</code>: vertical-align: text-top</li>
+<li><code>.u-va--m</code>: vertical-align: middle</li>
+<li><code>.u-va--bl</code>: vertical-align: baseline</li>
+<li><code>.u-va--b</code>: vertical-align: bottom</li>
+<li><code>.u-va--tb</code>: vertical-align: text-bottom</li>
+<li><code>.u-va--sub</code>: vertical-align: sub</li>
+</ul>
+<h4 id="installation">Installation</h4>
+<p>Using npm:</p>
+<pre><code class="lang-sh">npm i -S jigsass-utils-text
+</code></pre>
+<h4 id="usage">Usage</h4>
+<p>Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).</p>
+<pre><code class="lang-scss">@import &#39;path/to/jigsass-utils-text/scss/index&#39;;
+</code></pre>
+<p>Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual vertical alignment
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside <code>.foo</code> and .<code>bar</code>):</p>
+<pre><code class="lang-scss">// _c.foo.scss
+.foo {
+  @include jigsass-util(u-va, $modifier: m); // &lt;-- vertical-align: middle
+
+  ...
+}
+</code></pre>
+<pre><code class="lang-scss">// _c.bar.scss
+.bar {
+  @include jigsass-util(u-va, $modifier: b);  // &lt;-- vertical-align: bottom
+  @include jigsass-util(u-va, $modifier: t, $from: large); // &lt;-- vertical-align: top from large bp and on.
+
+  ...
+}
+</code></pre>
+<p>Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man&#39;s dependency
+management.</p>
+<p>Developer communication is also assisted by including &quot;dependencies&quot; wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.</p>
+<p>As far as bloat goes, just don&#39;t worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.</p>
+<p>JigSass Text classes are responsive-enabled, using <a href="https://txhawks.github.io/jigsass-tools-mq/">JigSass MQ</a>
+and the breakpoints defined in the <a href="https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints">$jigsass-breakpoints</a> variable.</p>
+<p>Based on the breakpoint arguments passed to <code>jigsass-util</code> when including a vertical-alignment class,
+responsive modifiers are generated according to the following logic:</p>
+<pre><code class="lang-scss">.u-va--&lt;modifier&gt;[-[-from-&lt;breakpoint-name&gt;][-until-&lt;breakpoint-name&gt;][-misc-&lt;breakpoint-name&gt;]]
+</code></pre>
+<p>So, assuming the <code>medium</code>, <code>large</code> and <code>landscape</code> breakpoints are defined in <code>$jigsass-breakpoints</code>
+as <code>600px</code>, <code>1024px</code> and <code>(orientation: landscape)</code> respectively,</p>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: bl);
+</code></pre>
+<p>will generate the <code>.u-va--bl</code> class, which is not limited to any media-query.</p>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: tt, $until: medium);
+</code></pre>
+<p>will generate the <code>.u-va--tt--until-medium</code> class, which will be in effect at
+<code>(max-width: 37.49em)</code> and will override styles in the default class until that point.</p>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: t, $from: large, $misc: landscape);
+</code></pre>
+<p>will generate the <code>.u-va--t--from-large-when-landscape</code> class, which will go into
+effect at <code>(min-width: 64em) and (orientation: landscape)</code> and will override styles in the default
+class under these  conditions.</p>
+<p><strong>License:</strong> MIT</p>
+
+				
+			</div>
+		</section>
+		
+		<section id="align-to-start">
+			<h3>Align to start</h3>
+			<div>
+				<p><strong>.u-ta--start</strong></p>
+<p>A utility class for aligning text to the horizontal start</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-ta, $modifier: start [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-ta--start&#39;&gt;
+  The text in this element is aligned towards the horizontal start.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="align-to-left">
+			<h3>Align to left</h3>
+			<div>
+				<p><strong>.u-ta--l</strong></p>
+<p>A utility class for aligning text to the horizontal left</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-ta, $modifier: l [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-ta--l&#39;&gt;
+  The text in this element is aligned towards the horizontal left.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="align-to-end">
+			<h3>Align to end</h3>
+			<div>
+				<p><strong>.u-ta--end</strong></p>
+<p>A utility class for aligning text to the horizontal end</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-ta, $modifier: end [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-ta--end&#39;&gt;
+  The text in this element is aligned towards the horizontal end.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="align-to-right">
+			<h3>Align to right</h3>
+			<div>
+				<p><strong>.u-ta--r</strong></p>
+<p>A utility class for aligning text to the horizontal right</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-ta, $modifier: r [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-ta--r&#39;&gt;
+  The text in this element is aligned towards the horizontal right.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="align-to-center">
+			<h3>Align to center</h3>
+			<div>
+				<p><strong>.u-ta--c</strong></p>
+<p>A utility class for aligning text to the horizontal center</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-ta, $modifier: c [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-ta--c&#39;&gt;
+  The text in this element is aligned towards the horizontal center.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="align-to-justify">
+			<h3>Align to justify</h3>
+			<div>
+				<p><strong>.u-ta--j</strong></p>
+<p>A utility class for justifying blocks of text</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-ta, $modifier: j [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-ta--j&#39;&gt;
+  The text in this element is justified.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+			</div>
+		</section>
+		
+		<section id="text-decoration-utils">
+			<h2>Text decoration Utils</h2>
+			<div>
+				
+				
+		<section id="introduction">
+			<h3>Introduction</h3>
+			<div>
+				<p>A collection of dynamically generated text-decoration utility classes.</p>
+<p>Class names follow the <a href="http://docs.emmet.io/cheat-sheet/">Emmet</a> abbreviation
+syntax, with colons (&#39;:&#39;) replaced by two dashes (<code>--</code>) to follow BEM naming
+conventions.</p>
+<h4 id="available-classes">Available classes</h4>
+<ul>
+<li><code>.u-td--n</code>: text-decoration: none</li>
+<li><code>.u-td--u</code>: text-decoration: underline</li>
+<li><code>.u-td--o</code>: text-decoration: overline</li>
+<li><code>.u-td--l</code>: text-decoration: line-through</li>
+</ul>
+<ul>
+<li><code>.u-td--n:hover</code>: text-decoration: none when hovered</li>
+<li><code>.u-td--u:hover</code>: text-decoration: underline when hovered</li>
+<li><code>.u-td--o:hover</code>: text-decoration: overline when hovered</li>
+<li><code>.u-td--l:hover</code>: text-decoration: line-through when hovered</li>
+</ul>
+<ul>
+<li><code>.u-td--n:focus</code>: text-decoration: none when focused</li>
+<li><code>.u-td--u:focus</code>: text-decoration: underline when focused</li>
+<li><code>.u-td--o:focus</code>: text-decoration: overline when focused</li>
+<li><code>.u-td--l:focus</code>: text-decoration: line-through when focused</li>
+</ul>
+<ul>
+<li><code>.u-td--n:active</code>: text-decoration: none when active</li>
+<li><code>.u-td--u:active</code>: text-decoration: underline when active</li>
+<li><code>.u-td--o:active</code>: text-decoration: overline when active</li>
+<li><code>.u-td--l:active</code>: text-decoration: line-through when active</li>
+</ul>
+<h4 id="installation">Installation</h4>
+<p>Using npm:</p>
+<pre><code class="lang-sh">npm i -S jigsass-utils-text
+</code></pre>
+<h4 id="usage">Usage</h4>
+<p>Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).</p>
+<pre><code class="lang-scss">@import &#39;path/to/jigsass-utils-text/scss/index&#39;;
+</code></pre>
+<p>Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual text decoration
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside <code>.foo</code> and .<code>bar</code>):</p>
+<pre><code class="lang-scss">// _c.foo.scss
+.foo {
+  @include jigsass-util(u-td, $modifier: u); // &lt;-- text-decoration: underline
+
+  ...
+}
+</code></pre>
+<pre><code class="lang-scss">// _c.bar.scss
+.bar {
+  @include jigsass-util(u-td, $modifier: n);  // &lt;-- text-decoration: none
+  @include jigsass-util(u-td, $modifier: o, $from: large); // &lt;-- text-decoration: overline from large bp and on.
+
+  ...
+}
+</code></pre>
+<p>Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man&#39;s dependency
+management.</p>
+<p>Developer communication is also assisted by including &quot;dependencies&quot; wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.</p>
+<p>As far as bloat goes, just don&#39;t worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.</p>
+<p>JigSass Text classes are responsive-enabled, using <a href="https://txhawks.github.io/jigsass-tools-mq/">JigSass MQ</a>
+and the breakpoints defined in the <a href="https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints">$jigsass-breakpoints</a> variable.</p>
+<p>Based on the breakpoint arguments passed to <code>jigsass-util</code> when including a text-decoration class,
+responsive modifiers are generated according to the following logic:</p>
+<pre><code class="lang-scss">.u-td--&lt;modifier&gt;[-[-from-&lt;breakpoint-name&gt;][-until-&lt;breakpoint-name&gt;][-misc-&lt;breakpoint-name&gt;]]
+</code></pre>
+<p>So, assuming the <code>medium</code>, <code>large</code> and <code>landscape</code> breakpoints are defined in <code>$jigsass-breakpoints</code>
+as <code>600px</code>, <code>1024px</code> and <code>(orientation: landscape)</code> respectively,</p>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: n);
+</code></pre>
+<p>will generate the <code>.u-td--n</code> class, which is not limited to any media-query.</p>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: n, $until: medium);
+</code></pre>
+<p>will generate the <code>.u-td--n--until-medium</code> class, which will be in effect at
+<code>(max-width: 37.49em)</code> and will override styles in the default class until that point.</p>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: n, $from: large, $misc: landscape);
+</code></pre>
+<p>will generate the <code>.u-td--n--from-large-when-landscape</code> class, which will go into
+effect at <code>(min-width: 64em) and (orientation: landscape)</code> and will override styles in the default
+class under these  conditions.</p>
+<p><strong>License:</strong> MIT</p>
+
+				
+			</div>
+		</section>
+		
+		<section id="text-decoration-nonehover">
+			<h3>Text Decoration: none:hover</h3>
+			<div>
+				<p><strong>.u-td--n:hover</strong></p>
+<p>A utility class for adding none text decoration to an elementwhen :hovered</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: n:hover [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-td--n:hover&#39;&gt;
+  This text has none text decoration when :hovered
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="text-decoration-none">
+			<h3>Text Decoration: none</h3>
+			<div>
+				<p><strong>.u-td--n</strong></p>
+<p>A utility class for adding none text decoration to an element</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: n [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-td--n&#39;&gt;
+  This text has none text decoration 
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="text-decoration-underlinehover">
+			<h3>Text Decoration: underline:hover</h3>
+			<div>
+				<p><strong>.u-td--u:hover</strong></p>
+<p>A utility class for adding underline text decoration to an elementwhen :hovered</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: u:hover [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-td--u:hover&#39;&gt;
+  This text has underline text decoration when :hovered
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="text-decoration-underline">
+			<h3>Text Decoration: underline</h3>
+			<div>
+				<p><strong>.u-td--u</strong></p>
+<p>A utility class for adding underline text decoration to an element</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: u [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-td--u&#39;&gt;
+  This text has underline text decoration 
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="text-decoration-overlinehover">
+			<h3>Text Decoration: overline:hover</h3>
+			<div>
+				<p><strong>.u-td--o:hover</strong></p>
+<p>A utility class for adding overline text decoration to an elementwhen :hovered</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: o:hover [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-td--o:hover&#39;&gt;
+  This text has overline text decoration when :hovered
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="text-decoration-overline">
+			<h3>Text Decoration: overline</h3>
+			<div>
+				<p><strong>.u-td--o</strong></p>
+<p>A utility class for adding overline text decoration to an element</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: o [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-td--o&#39;&gt;
+  This text has overline text decoration 
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="text-decoration-line-throughhover">
+			<h3>Text Decoration: line-through:hover</h3>
+			<div>
+				<p><strong>.u-td--l:hover</strong></p>
+<p>A utility class for adding line-through text decoration to an elementwhen :hovered</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: l:hover [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-td--l:hover&#39;&gt;
+  This text has line-through text decoration when :hovered
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="text-decoration-line-through">
+			<h3>Text Decoration: line-through</h3>
+			<div>
+				<p><strong>.u-td--l</strong></p>
+<p>A utility class for adding line-through text decoration to an element</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: l [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo  u-td--l&#39;&gt;
+  This text has line-through text decoration 
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+			</div>
+		</section>
+		
+		<section id="vertical-alignment-utils">
+			<h2>vertical Alignment Utils</h2>
+			<div>
+				
+				
+		<section id="v-align-to-top">
+			<h3>V Align to top</h3>
+			<div>
+				<p><strong>u-va--t</strong></p>
+<p>A utility class for vertically aligning elements to top</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: t [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo&#39;&gt;
+  &lt;span class=&#39;u-va--t&#39;&gt;
+    The text in this element is vertically aligned to top
+  &lt;/span&gt;
+  &lt;span class=&#39;fpo--va u-va--t&#39;&gt;&lt;/span&gt;
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="v-align-to-middle">
+			<h3>V Align to middle</h3>
+			<div>
+				<p><strong>u-va--m</strong></p>
+<p>A utility class for vertically aligning elements to middle</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: m [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo&#39;&gt;
+  &lt;span class=&#39;u-va--m&#39;&gt;
+    The text in this element is vertically aligned to middle
+  &lt;/span&gt;
+  &lt;span class=&#39;fpo--va u-va--m&#39;&gt;&lt;/span&gt;
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="v-align-to-bottom">
+			<h3>V Align to bottom</h3>
+			<div>
+				<p><strong>u-va--b</strong></p>
+<p>A utility class for vertically aligning elements to bottom</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: b [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo&#39;&gt;
+  &lt;span class=&#39;u-va--b&#39;&gt;
+    The text in this element is vertically aligned to bottom
+  &lt;/span&gt;
+  &lt;span class=&#39;fpo--va u-va--b&#39;&gt;&lt;/span&gt;
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="v-align-to-text-top">
+			<h3>V Align to text-top</h3>
+			<div>
+				<p><strong>u-va--tt</strong></p>
+<p>A utility class for vertically aligning elements to text-top</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: tt [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo&#39;&gt;
+  &lt;span class=&#39;u-va--tt&#39;&gt;
+    The text in this element is vertically aligned to text-top
+  &lt;/span&gt;
+  &lt;span class=&#39;fpo--va u-va--tt&#39;&gt;&lt;/span&gt;
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="v-align-to-text-bottom">
+			<h3>V Align to text-bottom</h3>
+			<div>
+				<p><strong>u-va--tb</strong></p>
+<p>A utility class for vertically aligning elements to text-bottom</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: tb [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo&#39;&gt;
+  &lt;span class=&#39;u-va--tb&#39;&gt;
+    The text in this element is vertically aligned to text-bottom
+  &lt;/span&gt;
+  &lt;span class=&#39;fpo--va u-va--tb&#39;&gt;&lt;/span&gt;
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="v-align-to-baseline">
+			<h3>V Align to baseline</h3>
+			<div>
+				<p><strong>u-va--bl</strong></p>
+<p>A utility class for vertically aligning elements to baseline</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: bl [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo&#39;&gt;
+  &lt;span class=&#39;u-va--bl&#39;&gt;
+    The text in this element is vertically aligned to baseline
+  &lt;/span&gt;
+  &lt;span class=&#39;fpo--va u-va--bl&#39;&gt;&lt;/span&gt;
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="v-align-to-super">
+			<h3>V Align to super</h3>
+			<div>
+				<p><strong>u-va--sup</strong></p>
+<p>A utility class for vertically aligning elements to super</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: sup [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo&#39;&gt;
+  &lt;span class=&#39;u-va--sup&#39;&gt;
+    The text in this element is vertically aligned to super
+  &lt;/span&gt;
+  &lt;span class=&#39;fpo--va u-va--sup&#39;&gt;&lt;/span&gt;
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="v-align-to-sub">
+			<h3>V Align to sub</h3>
+			<div>
+				<p><strong>u-va--sub</strong></p>
+<p>A utility class for vertically aligning elements to sub</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: sub [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo&#39;&gt;
+  &lt;span class=&#39;u-va--sub&#39;&gt;
+    The text in this element is vertically aligned to sub
+  &lt;/span&gt;
+  &lt;span class=&#39;fpo--va u-va--sub&#39;&gt;&lt;/span&gt;
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+			</div>
+		</section>
+		
+		<section id="white-space-utils">
+			<h2>White-space Utils</h2>
+			<div>
+				
+				
+		<section id="introduction">
+			<h3>Introduction</h3>
+			<div>
+				<p>A collection of dynamically generated white-space utility classes.</p>
+<p>Class names follow the <a href="http://docs.emmet.io/cheat-sheet/">Emmet</a> abbreviation
+syntax, with colons (&#39;:&#39;) replaced by two dashes (<code>--</code>) to follow BEM naming
+conventions.</p>
+<h4 id="available-classes">Available classes</h4>
+<ul>
+<li><code>.u-whs--n</code>: white-space: normal</li>
+<li><code>.u-whs--p</code>: white-space: pre</li>
+<li><code>.u-whs--nw</code>: white-space: nowrap</li>
+<li><code>.u-whs--pw</code>: white-space: pre-wrap</li>
+<li><code>.u-whs--pl</code>: white-space: pre-line</li>
+</ul>
+<h4 id="installation">Installation</h4>
+<p>Using npm:</p>
+<pre><code class="lang-sh">npm i -S jigsass-utils-text
+</code></pre>
+<h4 id="usage">Usage</h4>
+<p>Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).</p>
+<pre><code class="lang-scss">@import &#39;path/to/jigsass-utils-text/scss/index&#39;;
+</code></pre>
+<p>Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual white-space
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside <code>.foo</code> and .<code>bar</code>):</p>
+<pre><code class="lang-scss">// _c.foo.scss
+.foo {
+  @include jigsass-util(u-whs, $modifier: nw); // &lt;-- white-space: nowrap
+
+  ...
+}
+</code></pre>
+<pre><code class="lang-scss">// _c.bar.scss
+.bar {
+  @include jigsass-util(u-whs, $modifier: n);  // &lt;-- white-space: normal
+  @include jigsass-util(u-whs, $modifier: pw, $from: large); // &lt;-- white-space: pre-wrap from large bp and on.
+
+  ...
+}
+</code></pre>
+<p>Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man&#39;s dependency
+management.</p>
+<p>Developer communication is also assisted by including &quot;dependencies&quot; wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.</p>
+<p>As far as bloat goes, just don&#39;t worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.</p>
+<p>JigSass Text classes are responsive-enabled, using <a href="https://txhawks.github.io/jigsass-tools-mq/">JigSass MQ</a>
+and the breakpoints defined in the <a href="https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints">$jigsass-breakpoints</a> variable.</p>
+<p>Based on the breakpoint arguments passed to <code>jigsass-util</code> when including a white-space class,
+responsive modifiers are generated according to the following logic:</p>
+<pre><code class="lang-scss">.u-whs--&lt;modifier&gt;[-[-from-&lt;breakpoint-name&gt;][-until-&lt;breakpoint-name&gt;][-misc-&lt;breakpoint-name&gt;]]
+</code></pre>
+<p>So, assuming the <code>medium</code>, <code>large</code> and <code>landscape</code> breakpoints are defined in <code>$jigsass-breakpoints</code>
+as <code>600px</code>, <code>1024px</code> and <code>(orientation: landscape)</code> respectively,</p>
+<pre><code class="lang-scss">@include jigsass-util(u-whs, $modifier: nw);
+</code></pre>
+<p>will generate the <code>.u-whs--nw</code> class, which is not limited to any media-query.</p>
+<pre><code class="lang-scss">@include jigsass-util(u-whs, $modifier: nw, $until: medium);
+</code></pre>
+<p>will generate the <code>.u-whs--nw--until-medium</code> class, which will be in effect at
+<code>(max-width: 37.49em)</code> and will override styles in the default class until that point.</p>
+<pre><code class="lang-scss">@include jigsass-util(u-whs, $modifier: p, $from: large, $misc: landscape);
+</code></pre>
+<p>will generate the <code>.u-whs--p--from-large-when-landscape</code> class, which will go into
+effect at <code>(min-width: 64em) and (orientation: landscape)</code> and will override styles in the default
+class under these  conditions.</p>
+<p><strong>License:</strong> MIT</p>
+
+				
+			</div>
+		</section>
+		
+		<section id="white-space-normal">
+			<h3>White-space normal</h3>
+			<div>
+				<p><strong>u-whs--n</strong></p>
+<p>A utility class for setting an element&#39;s <code>white-space</code> to normal</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-whs, $modifier: n [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo u-whs--n&#39;&gt;
+  The white-space of      the text in thiselement is set to normal.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="white-space-pre">
+			<h3>White-space pre</h3>
+			<div>
+				<p><strong>u-whs--p</strong></p>
+<p>A utility class for setting an element&#39;s <code>white-space</code> to pre</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-whs, $modifier: p [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo u-whs--p&#39;&gt;
+  The white-space of      the text in thiselement is set to pre.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="white-space-nowrap">
+			<h3>White-space nowrap</h3>
+			<div>
+				<p><strong>u-whs--nw</strong></p>
+<p>A utility class for setting an element&#39;s <code>white-space</code> to nowrap</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-whs, $modifier: nw [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo u-whs--nw&#39;&gt;
+  The white-space of      the text in thiselement is set to nowrap.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="white-space-pre-wrap">
+			<h3>White-space pre-wrap</h3>
+			<div>
+				<p><strong>u-whs--pw</strong></p>
+<p>A utility class for setting an element&#39;s <code>white-space</code> to pre-wrap</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-whs, $modifier: pw [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo u-whs--pw&#39;&gt;
+  The white-space of      the text in thiselement is set to pre-wrap.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="white-space-pre-line">
+			<h3>White-space pre-line</h3>
+			<div>
+				<p><strong>u-whs--pl</strong></p>
+<p>A utility class for setting an element&#39;s <code>white-space</code> to pre-line</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-whs, $modifier: pl [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo u-whs--pl&#39;&gt;
+  The white-space of      the text in thiselement is set to pre-line.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+			</div>
+		</section>
+		
+	<footer>Last modified Monday, 11 April 2016 20:06</footer>
+</main>
+<script src="prism.js"></script>
+<script src="examples.js"></script>
+<script src="script.js"></script>
+
