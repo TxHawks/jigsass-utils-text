@@ -15,9 +15,13 @@ conventions.
 #### Text Alignment
 
   - `.u-ta--start`: text-align: (left|right) (left in `LTR`, right in `RTL`)
+    - `[dir=ltr] .u-ta--start`: text-align: left
+    - `[dir=rtl] .u-ta--start`: text-align: right
   - `.u-ta--l`: text-align: left
   - `.u-ta--c`: text-align: center
   - `.u-ta--end`: text-align: (right|left) (right in `LTR`, left in `RTL`)
+    - `[dir=ltr] .u-ta--end`: text-align: right
+    - `[dir=rtl] .u-ta--end`: text-align: left
   - `.u-tr--r`: text-align: right
   - `.u-ta--j`: text-align: justify
 
