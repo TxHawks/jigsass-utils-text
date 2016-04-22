@@ -177,7 +177,7 @@ A utility class for aligning text to the horizontal left
 }
 
 .u-ta--end {
-  text-align: end;
+  text-align: right;
   /* ---
 section: Text Alignment Utils
 title: Align to end
@@ -202,6 +202,14 @@ A utility class for aligning text to the horizontal end
 </p>
 ```
 */
+}
+
+[dir=ltr] .u-ta--end {
+  text-align: right;
+}
+
+[dir=rtl] .u-ta--end {
+  text-align: left;
 }
 
 .u-ta--r {
