@@ -663,12 +663,12 @@ A utility class for adding line-through text decoration to an element
 }
 
 /* ---
-section: Text Alignment Utils
+section: Vertical Alignment Utils
 title: Introduction
 order: -10
 ---
 
-A collection of dynamically generated text-alignment utility classes.
+A collection of dynamically generated vertical-alignment utility classes.
 
 Class names follow the [Emmet](http://docs.emmet.io/cheat-sheet/) abbreviation
 syntax, with colons (':') replaced by two dashes (`--`) to follow BEM naming
@@ -777,7 +777,7 @@ class under these  conditions.
 .u-va--t {
   vertical-align: top;
   /* ---
-section: vertical Alignment Utils
+section: Vertical Alignment Utils
 title: V Align to top
 order: 1
 ---
@@ -808,7 +808,7 @@ A utility class for vertically aligning elements to top
 .u-va--m {
   vertical-align: middle;
   /* ---
-section: vertical Alignment Utils
+section: Vertical Alignment Utils
 title: V Align to middle
 order: 2
 ---
@@ -839,7 +839,7 @@ A utility class for vertically aligning elements to middle
 .u-va--b {
   vertical-align: bottom;
   /* ---
-section: vertical Alignment Utils
+section: Vertical Alignment Utils
 title: V Align to bottom
 order: 3
 ---
@@ -870,7 +870,7 @@ A utility class for vertically aligning elements to bottom
 .u-va--tt {
   vertical-align: text-top;
   /* ---
-section: vertical Alignment Utils
+section: Vertical Alignment Utils
 title: V Align to text-top
 order: 4
 ---
@@ -901,7 +901,7 @@ A utility class for vertically aligning elements to text-top
 .u-va--tb {
   vertical-align: text-bottom;
   /* ---
-section: vertical Alignment Utils
+section: Vertical Alignment Utils
 title: V Align to text-bottom
 order: 5
 ---
@@ -932,7 +932,7 @@ A utility class for vertically aligning elements to text-bottom
 .u-va--bl {
   vertical-align: baseline;
   /* ---
-section: vertical Alignment Utils
+section: Vertical Alignment Utils
 title: V Align to baseline
 order: 6
 ---
@@ -963,7 +963,7 @@ A utility class for vertically aligning elements to baseline
 .u-va--sup {
   vertical-align: super;
   /* ---
-section: vertical Alignment Utils
+section: Vertical Alignment Utils
 title: V Align to super
 order: 7
 ---
@@ -994,7 +994,7 @@ A utility class for vertically aligning elements to super
 .u-va--sub {
   vertical-align: sub;
   /* ---
-section: vertical Alignment Utils
+section: Vertical Alignment Utils
 title: V Align to sub
 order: 8
 ---

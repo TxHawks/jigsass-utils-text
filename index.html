@@ -24,11 +24,6 @@
 				</li>
 				
 				<li>
-					<a href="#introduction"><span>Introduction</span></a>
-					
-				</li>
-				
-				<li>
 					<a href="#align-to-start"><span>Align to start</span></a>
 					
 				</li>
@@ -117,10 +112,15 @@
 				</li>
 				
 				<li>
-					<a href="#vertical-alignment-utils"><span>vertical Alignment Utils</span></a>
+					<a href="#vertical-alignment-utils"><span>Vertical Alignment Utils</span></a>
 					
 	<ul>
 		
+				<li>
+					<a href="#introduction"><span>Introduction</span></a>
+					
+				</li>
+				
 				<li>
 					<a href="#v-align-to-top"><span>V Align to top</span></a>
 					
@@ -294,86 +294,6 @@ as <code>600px</code>, <code>1024px</code> and <code>(orientation: landscape)</c
 <pre><code class="lang-scss">@include jigsass-util(u-ta, $modifier: c, $from: large, $misc: landscape);
 </code></pre>
 <p>will generate the <code>.u-ta--c--from-large-when-landscape</code> class, which will go into
-effect at <code>(min-width: 64em) and (orientation: landscape)</code> and will override styles in the default
-class under these  conditions.</p>
-<p><strong>License:</strong> MIT</p>
-
-				
-			</div>
-		</section>
-		
-		<section id="introduction">
-			<h3>Introduction</h3>
-			<div>
-				<p>A collection of dynamically generated text-alignment utility classes.</p>
-<p>Class names follow the <a href="http://docs.emmet.io/cheat-sheet/">Emmet</a> abbreviation
-syntax, with colons (&#39;:&#39;) replaced by two dashes (<code>--</code>) to follow BEM naming
-conventions.</p>
-<h4 id="available-classes">Available classes</h4>
-<ul>
-<li><code>.u-va--sup</code>: vertical-align: super</li>
-<li><code>.u-va--t</code>: vertical-align: top</li>
-<li><code>.u-va--tt</code>: vertical-align: text-top</li>
-<li><code>.u-va--m</code>: vertical-align: middle</li>
-<li><code>.u-va--bl</code>: vertical-align: baseline</li>
-<li><code>.u-va--b</code>: vertical-align: bottom</li>
-<li><code>.u-va--tb</code>: vertical-align: text-bottom</li>
-<li><code>.u-va--sub</code>: vertical-align: sub</li>
-</ul>
-<h4 id="installation">Installation</h4>
-<p>Using npm:</p>
-<pre><code class="lang-sh">npm i -S jigsass-utils-text
-</code></pre>
-<h4 id="usage">Usage</h4>
-<p>Import JigSass Utils Text into your main scss file near its very end, together with all
-other utilities (utilities should always be the last to be imported).</p>
-<pre><code class="lang-scss">@import &#39;path/to/jigsass-utils-text/scss/index&#39;;
-</code></pre>
-<p>Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
-when imported. You would need to explicitly indicate that each individual vertical alignment
-class should actually be generated in each component or object it is used in
-(clarification: This will include style declarations inside <code>.foo</code> and .<code>bar</code>):</p>
-<pre><code class="lang-scss">// _c.foo.scss
-.foo {
-  @include jigsass-util(u-va, $modifier: m); // &lt;-- vertical-align: middle
-
-  ...
-}
-</code></pre>
-<pre><code class="lang-scss">// _c.bar.scss
-.bar {
-  @include jigsass-util(u-va, $modifier: b);  // &lt;-- vertical-align: bottom
-  @include jigsass-util(u-va, $modifier: t, $from: large); // &lt;-- vertical-align: top from large bp and on.
-
-  ...
-}
-</code></pre>
-<p>Doing so helps us a great deal with portability, as no matter where we import component or object
-partials, the correct utility classes will be generated. Think of it as a poor man&#39;s dependency
-management.</p>
-<p>Developer communication is also assisted by including &quot;dependencies&quot; wherever they are required,
-as anyone going through a partial, can easily understand how it should be marked up with just a
-glance.</p>
-<p>As far as bloat goes, just don&#39;t worry about it - the actual styles will only be generated once,
-at the location in the cascade where the Jigsass Text partial was imported into the main file.</p>
-<p>JigSass Text classes are responsive-enabled, using <a href="https://txhawks.github.io/jigsass-tools-mq/">JigSass MQ</a>
-and the breakpoints defined in the <a href="https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints">$jigsass-breakpoints</a> variable.</p>
-<p>Based on the breakpoint arguments passed to <code>jigsass-util</code> when including a vertical-alignment class,
-responsive modifiers are generated according to the following logic:</p>
-<pre><code class="lang-scss">.u-va--&lt;modifier&gt;[-[-from-&lt;breakpoint-name&gt;][-until-&lt;breakpoint-name&gt;][-misc-&lt;breakpoint-name&gt;]]
-</code></pre>
-<p>So, assuming the <code>medium</code>, <code>large</code> and <code>landscape</code> breakpoints are defined in <code>$jigsass-breakpoints</code>
-as <code>600px</code>, <code>1024px</code> and <code>(orientation: landscape)</code> respectively,</p>
-<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: bl);
-</code></pre>
-<p>will generate the <code>.u-va--bl</code> class, which is not limited to any media-query.</p>
-<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: tt, $until: medium);
-</code></pre>
-<p>will generate the <code>.u-va--tt--until-medium</code> class, which will be in effect at
-<code>(max-width: 37.49em)</code> and will override styles in the default class until that point.</p>
-<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: t, $from: large, $misc: landscape);
-</code></pre>
-<p>will generate the <code>.u-va--t--from-large-when-landscape</code> class, which will go into
 effect at <code>(min-width: 64em) and (orientation: landscape)</code> and will override styles in the default
 class under these  conditions.</p>
 <p><strong>License:</strong> MIT</p>
@@ -740,10 +660,90 @@ class under these  conditions.</p>
 		</section>
 		
 		<section id="vertical-alignment-utils">
-			<h2>vertical Alignment Utils</h2>
+			<h2>Vertical Alignment Utils</h2>
 			<div>
 				
 				
+		<section id="introduction">
+			<h3>Introduction</h3>
+			<div>
+				<p>A collection of dynamically generated vertical-alignment utility classes.</p>
+<p>Class names follow the <a href="http://docs.emmet.io/cheat-sheet/">Emmet</a> abbreviation
+syntax, with colons (&#39;:&#39;) replaced by two dashes (<code>--</code>) to follow BEM naming
+conventions.</p>
+<h4 id="available-classes">Available classes</h4>
+<ul>
+<li><code>.u-va--sup</code>: vertical-align: super</li>
+<li><code>.u-va--t</code>: vertical-align: top</li>
+<li><code>.u-va--tt</code>: vertical-align: text-top</li>
+<li><code>.u-va--m</code>: vertical-align: middle</li>
+<li><code>.u-va--bl</code>: vertical-align: baseline</li>
+<li><code>.u-va--b</code>: vertical-align: bottom</li>
+<li><code>.u-va--tb</code>: vertical-align: text-bottom</li>
+<li><code>.u-va--sub</code>: vertical-align: sub</li>
+</ul>
+<h4 id="installation">Installation</h4>
+<p>Using npm:</p>
+<pre><code class="lang-sh">npm i -S jigsass-utils-text
+</code></pre>
+<h4 id="usage">Usage</h4>
+<p>Import JigSass Utils Text into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).</p>
+<pre><code class="lang-scss">@import &#39;path/to/jigsass-utils-text/scss/index&#39;;
+</code></pre>
+<p>Like all other JigSass Utils, JigSass Text does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual vertical alignment
+class should actually be generated in each component or object it is used in
+(clarification: This will include style declarations inside <code>.foo</code> and .<code>bar</code>):</p>
+<pre><code class="lang-scss">// _c.foo.scss
+.foo {
+  @include jigsass-util(u-va, $modifier: m); // &lt;-- vertical-align: middle
+
+  ...
+}
+</code></pre>
+<pre><code class="lang-scss">// _c.bar.scss
+.bar {
+  @include jigsass-util(u-va, $modifier: b);  // &lt;-- vertical-align: bottom
+  @include jigsass-util(u-va, $modifier: t, $from: large); // &lt;-- vertical-align: top from large bp and on.
+
+  ...
+}
+</code></pre>
+<p>Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man&#39;s dependency
+management.</p>
+<p>Developer communication is also assisted by including &quot;dependencies&quot; wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.</p>
+<p>As far as bloat goes, just don&#39;t worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Text partial was imported into the main file.</p>
+<p>JigSass Text classes are responsive-enabled, using <a href="https://txhawks.github.io/jigsass-tools-mq/">JigSass MQ</a>
+and the breakpoints defined in the <a href="https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints">$jigsass-breakpoints</a> variable.</p>
+<p>Based on the breakpoint arguments passed to <code>jigsass-util</code> when including a vertical-alignment class,
+responsive modifiers are generated according to the following logic:</p>
+<pre><code class="lang-scss">.u-va--&lt;modifier&gt;[-[-from-&lt;breakpoint-name&gt;][-until-&lt;breakpoint-name&gt;][-misc-&lt;breakpoint-name&gt;]]
+</code></pre>
+<p>So, assuming the <code>medium</code>, <code>large</code> and <code>landscape</code> breakpoints are defined in <code>$jigsass-breakpoints</code>
+as <code>600px</code>, <code>1024px</code> and <code>(orientation: landscape)</code> respectively,</p>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: bl);
+</code></pre>
+<p>will generate the <code>.u-va--bl</code> class, which is not limited to any media-query.</p>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: tt, $until: medium);
+</code></pre>
+<p>will generate the <code>.u-va--tt--until-medium</code> class, which will be in effect at
+<code>(max-width: 37.49em)</code> and will override styles in the default class until that point.</p>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: t, $from: large, $misc: landscape);
+</code></pre>
+<p>will generate the <code>.u-va--t--from-large-when-landscape</code> class, which will go into
+effect at <code>(min-width: 64em) and (orientation: landscape)</code> and will override styles in the default
+class under these  conditions.</p>
+<p><strong>License:</strong> MIT</p>
+
+				
+			</div>
+		</section>
+		
 		<section id="v-align-to-top">
 			<h3>V Align to top</h3>
 			<div>
@@ -1105,7 +1105,7 @@ class under these  conditions.</p>
 			</div>
 		</section>
 		
-	<footer>Last modified Friday, 22 April 2016 23:23</footer>
+	<footer>Last modified Saturday, 23 April 2016 18:55</footer>
 </main>
 <script src="prism.js"></script>
 <script src="examples.js"></script>
