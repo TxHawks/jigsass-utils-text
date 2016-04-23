@@ -1,6 +1,6 @@
 // *************************************
 //
-// # Text Alignment
+// # Vertical Alignment
 //
 // *************************************
 
@@ -25,12 +25,12 @@
 
 // stylelint-disable
 /* ---
-section: Text Alignment Utils
+section: Vertical Alignment Utils
 title: Introduction
 order: -10
 ---
 
-A collection of dynamically generated text-alignment utility classes.
+A collection of dynamically generated vertical-alignment utility classes.
 
 Class names follow the [Emmet](http://docs.emmet.io/cheat-sheet/) abbreviation
 syntax, with colons (':') replaced by two dashes (`--`) to follow BEM naming
@@ -146,7 +146,7 @@ class under these  conditions.
 // Variables
 // -------------------------------------
 
-/// A constant used for generating text-alignment utility classes.
+/// A constant used for generating vertical-alignment utility classes.
 /// ---
 /// @type Map
 /// ---
@@ -184,7 +184,7 @@ $_jigsass-util-va-i: 1;
     // stylelint-disable
 
 /* ---
-section: vertical Alignment Utils
+section: Vertical Alignment Utils
 title: V Align to #{map-get($_jigsass-text-va-vals, $jigsass-util-modifier)}
 order: #{$_jigsass-util-va-i}
 ---
