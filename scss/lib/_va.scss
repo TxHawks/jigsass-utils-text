@@ -46,6 +46,7 @@ conventions.
   - `.u-va--b`: vertical-align: bottom
   - `.u-va--tb`: vertical-align: text-bottom
   - `.u-va--sub`: vertical-align: sub
+  - `.u-va--<length>`: vertical-align: sub
 
 #### Installation
 
@@ -176,7 +177,25 @@ $_jigsass-util-va-i: 1;
     @error 'jigsass-utils-text: #{$jigsass-util-name} must be passed A ' +
       'value through a modifier.';
   }
-  vertical-align: map-get($_jigsass-text-va-vals, $jigsass-util-modifier);
+
+  $_mod-is-num: false;
+
+  @if (type-of($jigsass-util-modifier) == number) {
+    $_mod-is-num: true;
+    vertical-align: $jigsass-util-modifier;
+  }
+  @else if (
+    type-of($jigsass-util-modifier) == string and
+    str-index($jigsass-util-modifier, min-) ==1
+  ) {
+    $_mod-is-num: true;
+    $value: -1 * jigsass-str-to-number(str-slice($jigsass-util-modifier, 5));
+
+    vertical-align: $value;
+  }
+  @else {
+    vertical-align: map-get($_jigsass-text-va-vals, $jigsass-util-modifier);
+  }
 
   $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
   @if (not index($_doclet-store, $_doclet)) {
@@ -185,12 +204,20 @@ $_jigsass-util-va-i: 1;
 
 /* ---
 section: Vertical Alignment Utils
-title: V Align to #{map-get($_jigsass-text-va-vals, $jigsass-util-modifier)}
+title: V Align #{if(
+  $_mod-is-num,
+  by map-get($_jigsass-text-va-vals, $jigsass-util-modifier),
+  to map-get($_jigsass-text-va-vals, $jigsass-util-modifier)
+)}
 order: #{$_jigsass-util-va-i}
 ---
 **#{$jigsass-util-name}--#{$jigsass-util-modifier}**
 
-A utility class for vertically aligning elements to #{map-get($_jigsass-text-va-vals, $jigsass-util-modifier)}
+A utility class for vertically aligning elements #{if(
+  $_mod-is-num,
+  by map-get($_jigsass-text-va-vals, $jigsass-util-modifier),
+  to map-get($_jigsass-text-va-vals, $jigsass-util-modifier)
+)}
 
 
 #### Include with:

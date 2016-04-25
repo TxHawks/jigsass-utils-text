@@ -684,6 +684,7 @@ conventions.
   - `.u-va--b`: vertical-align: bottom
   - `.u-va--tb`: vertical-align: text-bottom
   - `.u-va--sub`: vertical-align: sub
+  - `.u-va--<length>`: vertical-align: sub
 
 #### Installation
 
@@ -1017,6 +1018,68 @@ A utility class for vertically aligning elements to sub
     The text in this element is vertically aligned to sub
   </span>
   <span class='fpo--va u-va--sub'></span>
+</p>
+```
+*/
+}
+
+.u-va--2em {
+  vertical-align: 2em;
+  /* ---
+section: Vertical Alignment Utils
+title: V Align by
+order: 9
+---
+**u-va--2em**
+
+A utility class for vertically aligning elements by
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-va, $modifier: 2em [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo'>
+  <span class='u-va--2em'>
+    The text in this element is vertically aligned to 
+  </span>
+  <span class='fpo--va u-va--2em'></span>
+</p>
+```
+*/
+}
+
+.u-va--min-2em {
+  vertical-align: -2em;
+  /* ---
+section: Vertical Alignment Utils
+title: V Align by
+order: 10
+---
+**u-va--min-2em**
+
+A utility class for vertically aligning elements by
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-va, $modifier: min-2em [, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='fpo'>
+  <span class='u-va--min-2em'>
+    The text in this element is vertically aligned to 
+  </span>
+  <span class='fpo--va u-va--min-2em'></span>
 </p>
 ```
 */

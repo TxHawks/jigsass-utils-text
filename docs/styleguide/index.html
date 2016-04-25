@@ -161,6 +161,16 @@
 					
 				</li>
 				
+				<li>
+					<a href="#v-align-by"><span>V Align by</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#v-align-by"><span>V Align by</span></a>
+					
+				</li>
+				
 	</ul>
 	
 				</li>
@@ -681,6 +691,7 @@ conventions.</p>
 <li><code>.u-va--b</code>: vertical-align: bottom</li>
 <li><code>.u-va--tb</code>: vertical-align: text-bottom</li>
 <li><code>.u-va--sub</code>: vertical-align: sub</li>
+<li><code>.u-va--&lt;length&gt;</code>: vertical-align: sub</li>
 </ul>
 <h4 id="installation">Installation</h4>
 <p>Using npm:</p>
@@ -912,6 +923,48 @@ class under these  conditions.</p>
 			</div>
 		</section>
 		
+		<section id="v-align-by">
+			<h3>V Align by</h3>
+			<div>
+				<p><strong>u-va--2em</strong></p>
+<p>A utility class for vertically aligning elements by</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: 2em [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo&#39;&gt;
+  &lt;span class=&#39;u-va--2em&#39;&gt;
+    The text in this element is vertically aligned to 
+  &lt;/span&gt;
+  &lt;span class=&#39;fpo--va u-va--2em&#39;&gt;&lt;/span&gt;
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="v-align-by">
+			<h3>V Align by</h3>
+			<div>
+				<p><strong>u-va--min-2em</strong></p>
+<p>A utility class for vertically aligning elements by</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-va, $modifier: min-2em [, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;fpo&#39;&gt;
+  &lt;span class=&#39;u-va--min-2em&#39;&gt;
+    The text in this element is vertically aligned to 
+  &lt;/span&gt;
+  &lt;span class=&#39;fpo--va u-va--min-2em&#39;&gt;&lt;/span&gt;
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
 			</div>
 		</section>
 		
@@ -1105,7 +1158,7 @@ class under these  conditions.</p>
 			</div>
 		</section>
 		
-	<footer>Last modified Saturday, 23 April 2016 18:55</footer>
+	<footer>Last modified Monday, 25 April 2016 23:59</footer>
 </main>
 <script src="prism.js"></script>
 <script src="examples.js"></script>

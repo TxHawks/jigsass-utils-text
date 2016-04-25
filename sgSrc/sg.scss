@@ -48,6 +48,8 @@ $_whs: n p nw pw pl;
 @each $alignment in $_va {
   @include jigsass-util(u-va, $modifier: $alignment);
 }
+@include jigsass-util(u-va, $modifier: 2em);
+@include jigsass-util(u-va, $modifier: min-2em);
 
 @each $method in $_whs {
   @include jigsass-util(u-whs, $modifier: $method);
